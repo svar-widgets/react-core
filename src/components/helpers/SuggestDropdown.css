@@ -1,0 +1,30 @@
+.wx-list.wx-233fr7 {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.wx-item.wx-233fr7 {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-family: var(--wx-input-font-family);
+  font-size: var(--wx-input-font-size);
+  line-height: var(--wx-input-line-height);
+  font-weight: var(--wx-input-font-weight);
+  color: var(--wx-input-font-color);
+  padding: var(--wx-input-padding);
+  cursor: pointer;
+}
+/* .item.selected {
+	background: var(--wx-color-primary);
+	color: var(--wx-color-primary-font);
+} */
+.wx-item.wx-focus.wx-233fr7 {
+  background: var(--wx-background-hover);
+}
+/* .item.selected.navigate {
+	background: var(--wx-color-primary-hover);
+} */
+.wx-no-data.wx-233fr7 {
+  padding: var(--wx-input-padding);
+}

@@ -1,0 +1,32 @@
+.wx-0-b7il9h.item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 12px;
+  overflow: hidden;
+}
+.wx-0-b7il9h.avatar {
+  margin-right: 12px;
+}
+.wx-0-b7il9h.name {
+  flex: 1;
+}
+.wx-0-b7il9h.mail {
+  flex: 1;
+}
+.wx-0-b7il9h.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #dfe2e6;
+  text-align: center;
+}
+.wx-0-b7il9h.user-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #dfe2e6;
+  object-fit: cover;
+}

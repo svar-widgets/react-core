@@ -1,0 +1,8 @@
+.wx-rangecalendar.wx-p2jCaW {
+  display: flex;
+  padding-bottom: var(--wx-calendar-padding);
+}
+
+.wx-half.wx-p2jCaW {
+  flex: 1;
+}

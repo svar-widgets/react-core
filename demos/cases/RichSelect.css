@@ -1,0 +1,11 @@
+.demo-box.wx-1Ca119 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.demo-box.wx-1Ca119 h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}

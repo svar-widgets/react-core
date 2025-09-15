@@ -1,0 +1,26 @@
+.demo-box.wx-2o76S9 {
+  margin: 15px;
+}
+.demo-box.wx-2o76S9 h3 {
+  margin: 0 0 15px 0;
+}
+.demo-box.wx-2o76S9 .wx-field {
+  margin-bottom: 15px;
+}
+.demo-box.wx-2o76S9 .wx-error-msg {
+  display: none;
+}
+.demo-box.wx-2o76S9 .wx-icon-left .wx-icon-calendar {
+  left: 15px;
+  right: auto;
+}
+.demo-box.wx-2o76S9 .wx-icon-left .wx-input {
+  padding-left: 50px;
+}
+.demo-box.wx-2o76S9 .wx-icon-left input {
+  padding-left: 50px;
+}
+.demo-box.wx-2o76S9 .wx-icon-left .wx-clear {
+  left: auto;
+  right: 20px;
+}

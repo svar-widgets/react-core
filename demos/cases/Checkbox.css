@@ -1,0 +1,10 @@
+.demo-box.wx-1WSziR {
+  margin: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.demo-box.wx-1WSziR > h3 {
+  margin-block-start: 0;
+}

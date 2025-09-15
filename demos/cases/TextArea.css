@@ -1,0 +1,21 @@
+div.wx-lock {
+  counter-reset: svelte-1w6cxxx 0;
+}
+
+.wx-lock {
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e1e4e8;
+}
+
+.demo-box.wx-lock h3.wx-lock {
+  margin: 0 0 1rem;
+  color: #1a202c;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.demo-box.wx-lock .field.wx-lock {
+  margin: 1rem 0;
+}

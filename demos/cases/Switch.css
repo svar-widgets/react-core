@@ -1,0 +1,13 @@
+.demo-box.wx-1fqWan {
+  padding: 1em 2em;
+}
+
+.demo-box.wx-1fqWan h3 {
+  color: #09f;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.demo-box.wx-1fqWan + .demo-box.wx-1fqWan {
+  margin-top: 2em;
+}

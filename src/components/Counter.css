@@ -1,0 +1,89 @@
+.wx-counter.wx-22t21n {
+  display: flex;
+  border: var(--wx-input-border);
+  width: max-content;
+  border-radius: var(--wx-input-border-radius);
+}
+
+.wx-counter.wx-22t21n:not(.wx-readonly):has(.wx-input:focus) {
+  border: var(--wx-input-border-focus);
+}
+
+.wx-input.wx-22t21n {
+  box-sizing: border-box;
+  background: var(--wx-background);
+  width: 40px;
+  height: 30px;
+  font-family: var(--wx-input-font-family);
+  font-size: var(--wx-input-font-size);
+  color: var(--wx-input-font-color);
+  padding-left: 8px;
+  padding-right: 8px;
+  outline: none;
+  border: none;
+  border-left: var(--wx-input-border);
+  border-right: var(--wx-input-border);
+}
+
+.wx-btn.wx-22t21n {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 30px;
+  font-family: var(--wx-input-font-family);
+  font-size: var(--wx-input-font-size);
+  color: var(--wx-input-font-color);
+  background-color: var(--wx-background-alt);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.wx-counter.wx-22t21n:not(.wx-readonly):not(.wx-disabled) .wx-btn:active {
+  background-color: var(--wx-background-hover);
+}
+
+.wx-dec.wx-22t21n,
+.wx-inc.wx-22t21n {
+  fill: var(--wx-color-primary);
+}
+
+.wx-btn-dec.wx-22t21n {
+  border-radius: 2px 0 0 2px;
+}
+
+.wx-btn-inc.wx-22t21n {
+  border-radius: 0 2px 2px 0;
+}
+
+.wx-error.wx-22t21n,
+.wx-counter.wx-error.wx-22t21n:has(.wx-input:focus) {
+  border: 1px solid var(--wx-color-danger);
+}
+
+.wx-error.wx-22t21n .wx-input.wx-22t21n {
+  color: var(--wx-color-danger);
+}
+
+.wx-disabled.wx-22t21n .wx-input.wx-22t21n,
+.wx-disabled.wx-22t21n .wx-btn.wx-22t21n {
+  cursor: not-allowed;
+  color: var(--wx-color-font-disabled);
+}
+
+.wx-disabled.wx-22t21n .wx-btn.wx-22t21n {
+  background: var(--wx-color-disabled-alt);
+}
+
+.wx-disabled.wx-22t21n .wx-btn.wx-22t21n .wx-dec.wx-22t21n,
+.wx-disabled.wx-22t21n .wx-btn.wx-22t21n .wx-inc.wx-22t21n,
+.wx-readonly.wx-22t21n .wx-btn.wx-22t21n .wx-dec.wx-22t21n,
+.wx-readonly.wx-22t21n .wx-btn.wx-22t21n .wx-inc.wx-22t21n {
+  fill: var(--wx-color-font-disabled);
+}
+
+.wx-readonly.wx-22t21n .wx-btn.wx-22t21n {
+  cursor: default;
+}

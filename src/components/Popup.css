@@ -1,0 +1,8 @@
+.wx-popup.wx-37M6Fj {
+  z-index: var(--wx-popup-z-index);
+  background: var(--wx-popup-background);
+  box-shadow: var(--wx-popup-shadow);
+  border: var(--wx-popup-border);
+  border-radius: var(--wx-popup-border-radius);
+  overflow: hidden;
+}

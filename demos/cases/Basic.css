@@ -1,0 +1,17 @@
+.demo-box.wx-1n1s96 {
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+.demo-box.wx-1n1s96 h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.demo-box.wx-1n1s96 button {
+  margin-right: 1rem;
+}

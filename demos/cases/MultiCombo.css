@@ -1,0 +1,10 @@
+.demo-box.wx-R7lgfw {
+  margin-bottom: var(--wx-margin-xl);
+}
+
+.demo-box.wx-R7lgfw > h3.wx-R7lgfw {
+  margin-bottom: var(--wx-margin-lg);
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+}

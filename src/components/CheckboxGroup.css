@@ -1,0 +1,23 @@
+.wx-checkboxgroup.wx-q8xwRD {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: calc(var(--wx-field-gutter) * -1);
+}
+.wx-item.wx-q8xwRD {
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-top: var(--wx-field-gutter);
+}
+
+.wx-checkboxgroup.wx-inline.wx-q8xwRD .wx-item.wx-q8xwRD {
+  flex: none;
+  padding-right: var(--wx-field-gutter);
+}
+
+.wx-checkboxgroup.wx-grid.wx-q8xwRD .wx-item.wx-q8xwRD {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-right: var(--wx-field-gutter);
+}

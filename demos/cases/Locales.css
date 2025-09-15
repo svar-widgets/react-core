@@ -1,0 +1,15 @@
+.demo-box.wx-34jMBF {
+}
+.calendar.wx-34jMBF {
+  border: var(--wx-border);
+  border-radius: 3px;
+}
+.bar.wx-34jMBF {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+  align-items: center;
+}
+.text.wx-34jMBF {
+  width: 150px;
+}

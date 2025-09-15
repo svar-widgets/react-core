@@ -1,0 +1,14 @@
+.demo-box.wx-2G3DEY {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.demo-box.wx-2G3DEY h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.125rem;
+}

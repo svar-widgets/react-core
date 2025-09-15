@@ -1,0 +1,57 @@
+.wx-pager.wx-35Np0p {
+  display: flex;
+  gap: var(--wx-padding);
+  align-items: center;
+  padding: var(--wx-padding);
+}
+
+.wx-input.wx-35Np0p {
+  display: block;
+  width: 50px;
+  height: var(--wx-input-height);
+  padding: var(--wx-input-padding);
+  outline: none;
+  font-family: var(--wx-input-font-family);
+  font-size: var(--wx-input-font-size);
+  line-height: var(--wx-input-line-height);
+  font-weight: var(--wx-input-font-weight);
+  text-align: var(--wx-input-text-align);
+  color: var(--wx-input-font-color);
+  border: var(--wx-input-border);
+  border-radius: var(--wx-input-border-radius);
+  background: var(--wx-input-background);
+}
+.wx-input.wx-35Np0p:focus {
+  border: var(--wx-input-border-focus);
+}
+.wx-input.wx-35Np0p::placeholder {
+  color: var(--wx-input-placeholder-color);
+}
+
+.wx-icon.wx-35Np0p {
+  cursor: pointer;
+  padding: var(--wx-input-padding);
+  border-radius: var(--wx-input-border-radius);
+  font-size: var(--wx-icon-size);
+  line-height: 1;
+  color: var(--wx-color-link);
+}
+.wx-icon.wx-35Np0p:before {
+  display: block;
+}
+.wx-icon.wx-35Np0p:hover {
+  background-color: var(--wx-background-hover);
+}
+.wx-icon.wx-35Np0p.wx-disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--wx-color-font-disabled);
+}
+
+.wx-left.wx-35Np0p,
+.wx-center.wx-35Np0p,
+.wx-right.wx-35Np0p {
+  display: flex;
+  align-items: center;
+  gap: var(--wx-padding);
+}

@@ -1,0 +1,34 @@
+.wx-months.wx-34U8T8 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: var(--wx-calendar-gap);
+}
+
+.wx-month.wx-34U8T8 {
+  flex: 0 0 calc(100% / 4 - var(--wx-calendar-gap) * 2);
+  max-width: calc(100% / 4 - var(--wx-calendar-gap) * 2);
+  margin: calc(var(--wx-calendar-gap) * 2) var(--wx-calendar-gap);
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  height: var(--wx-calendar-cell-size);
+  border-radius: var(--wx-calendar-border-radius);
+}
+.wx-month.wx-current.wx-34U8T8 {
+  background: var(--wx-color-primary);
+  color: var(--wx-color-primary-font);
+}
+.wx-month:not(.wx-current):hover {
+  background-color: var(--wx-background-hover);
+}
+
+.wx-buttons.wx-34U8T8 {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--wx-calendar-gap);
+}

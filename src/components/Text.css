@@ -1,0 +1,97 @@
+.wx-text.wx-hQ64J4 {
+  position: relative;
+  width: var(--wx-input-width);
+}
+.wx-text.wx-disabled.wx-hQ64J4 .wx-icon.wx-hQ64J4 {
+  color: var(--wx-color-font-disabled);
+}
+.wx-text.wx-error.wx-hQ64J4 .wx-icon.wx-hQ64J4 {
+  color: var(--wx-color-danger);
+}
+.wx-icon.wx-hQ64J4 {
+  position: absolute;
+  right: var(--wx-input-icon-indent);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--wx-input-icon-size);
+  line-height: 1;
+  width: var(--wx-input-icon-size);
+  height: var(--wx-input-icon-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  color: var(--wx-input-icon-color);
+}
+.wx-icon.wx-hQ64J4:before {
+  display: block;
+}
+
+.wx-icon-left.wx-hQ64J4 .wx-icon.wx-hQ64J4:not(.wxi-close) {
+  right: auto;
+  left: var(--wx-input-icon-indent);
+}
+
+.wx-icon.wxi-close.wx-hQ64J4 {
+  pointer-events: all;
+  cursor: pointer;
+}
+.wx-icon.wxi-close.wx-hQ64J4:hover {
+  background: var(--wx-background-hover);
+  border-radius: var(--wx-icon-border-radius);
+}
+
+.wx-input.wx-hQ64J4 {
+  display: block;
+  width: var(--wx-input-width);
+  height: var(--wx-input-height);
+  max-width: 100%;
+  padding: var(--wx-input-padding);
+  outline: none;
+  font-family: var(--wx-input-font-family);
+  font-size: var(--wx-input-font-size);
+  line-height: var(--wx-input-line-height);
+  font-weight: var(--wx-input-font-weight);
+  text-align: var(--wx-input-text-align);
+  color: var(--wx-input-font-color);
+  border: var(--wx-input-border);
+  border-radius: var(--wx-input-border-radius);
+  background: var(--wx-input-background);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wx-input.wx-hQ64J4:focus {
+  border: var(--wx-input-border-focus);
+}
+.wx-input.wx-hQ64J4::placeholder {
+  color: var(--wx-input-placeholder-color);
+}
+
+.wx-icon-left.wx-hQ64J4 .wx-input.wx-hQ64J4 {
+  padding-left: calc(
+    var(--wx-input-icon-size) + var(--wx-input-icon-indent) * 2
+  );
+}
+.wx-icon-right.wx-hQ64J4 .wx-input.wx-hQ64J4,
+.wx-text.wx-clear.wx-hQ64J4 .wx-input.wx-hQ64J4 {
+  padding-right: calc(
+    var(--wx-input-icon-size) + var(--wx-input-icon-indent) * 2
+  );
+}
+
+.wx-input.wx-hQ64J4[disabled] {
+  cursor: not-allowed !important;
+  border: var(--wx-input-border-disabled);
+  color: var(--wx-color-font-disabled);
+  background: var(--wx-input-background-disabled);
+  pointer-events: none;
+}
+.wx-input.wx-hQ64J4[disabled]::placeholder {
+  color: var(--wx-color-font-disabled);
+}
+
+.wx-error.wx-hQ64J4 .wx-input.wx-hQ64J4 {
+  border-color: var(--wx-color-danger);
+  color: var(--wx-color-danger);
+}
