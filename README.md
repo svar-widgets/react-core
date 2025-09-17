@@ -1,5 +1,5 @@
 <div align="center">
-	
+
 # SVAR React Core | UI Component Library
 
 </div>
@@ -21,7 +21,7 @@
 **SVAR React Core** is a lightweight, fast, and mobile-friendly React component library that offers 20+ reusable, pre-styled UI components. It includes form controls, popups, date & time pickers, toast notifications, and more. The components are easily customizable and come with built-in light and dark themes.
 
 <div align="center">
-	
+
 <img src="https://svar.dev/images/github/github-core.png" alt="SVAR Core - React UI Library" style="width: 752px;">
 
 </div>
@@ -42,7 +42,7 @@ To start using the components from the **Core** package, simply import the packa
 
 ```jsx
 import { Button } from "@svar-ui/react-core";
-import "@svar-ui/react-core/style.css";
+import "@svar-ui/react-core/all.css";
 
 const myComponent => (<Button>Click me</Button>);
 ```
