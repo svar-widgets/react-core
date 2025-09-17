@@ -42,6 +42,7 @@ To start using the components from the **Core** package, simply import the packa
 
 ```jsx
 import { Button } from "@svar-ui/react-core";
+import "@svar-ui/react-core/style.css";
 
 const myComponent => (<Button>Click me</Button>);
 ```
