@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Button, Popup } from '../../src/index';
+import { env } from '@svar-ui/lib-dom';
 import './Popup.css';
 
 export default function DemoPopup() {
@@ -18,10 +19,10 @@ export default function DemoPopup() {
     setMode('bottom');
     setParent(node.current);
   }
-  function showCenter() {
+  function showCenter(ev) {
     setIsOpen(true);
     setMode('center');
-    setParent(document.body);
+    setParent(env.getTopNode(ev.target));
   }
 
   function onCancel() {

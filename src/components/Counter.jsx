@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
+import { useWritableProp } from '@svar-ui/lib-react';
 import { uid } from '@svar-ui/lib-dom';
 import './Counter.css';
 
@@ -13,7 +14,7 @@ const Counter = ({
   readonly = false,
   onChange,
 }) => {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useWritableProp(initialValue);
 
   const dec = useCallback(() => {
     if (readonly || value <= min) return;

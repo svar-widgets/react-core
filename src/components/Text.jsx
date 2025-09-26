@@ -16,7 +16,7 @@ export default function Text({
   inputStyle = {},
   title = '',
   css = '',
-  icon,
+  icon = '',
   clear = false,
   onChange,
 }) {

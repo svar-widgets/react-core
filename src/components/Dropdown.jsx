@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { clickOutside } from '@svar-ui/lib-dom';
+import { clickOutside, env } from '@svar-ui/lib-dom';
 import './Dropdown.css';
 
 function Dropdown({
   position = 'bottom',
   align = 'start',
   autoFit = true,
-  onCancel = null,
+  onCancel,
   width = '100%',
   children,
 }) {
@@ -28,7 +28,7 @@ function Dropdown({
       const node = nodeRef.current;
       if (node) {
         const nodeCoords = node.getBoundingClientRect();
-        const bodyCoords = document.body.getBoundingClientRect();
+        const bodyCoords = env.getTopNode(node).getBoundingClientRect();
 
         if (nodeCoords.right >= bodyCoords.right) {
           setAlign('end');

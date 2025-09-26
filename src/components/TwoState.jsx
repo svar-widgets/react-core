@@ -5,9 +5,9 @@ import Button from './Button.jsx';
 const TwoState = ({
   value: initialValue = false,
   type = '',
-  icon = null,
-  disabled = null,
-  iconActive = null,
+  icon = '',
+  disabled = false,
+  iconActive = '',
   onClick,
   title = '',
   css = '',

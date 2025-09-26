@@ -73,6 +73,8 @@ export default function MultiCombo({
         setValue(next);
         if (onValueChange) onValueChange(next);
         onChange && onChange({ value: next });
+
+        inputElement.current.focus();
       }
     },
     [value, onValueChange, onChange],
@@ -86,7 +88,6 @@ export default function MultiCombo({
       setValue(next);
       if (onValueChange) onValueChange(next);
       onChange && onChange({ value: next });
-      setFocus(true);
     },
     [value, onValueChange, onChange],
   );

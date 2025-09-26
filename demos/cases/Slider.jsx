@@ -12,9 +12,9 @@ export default function SliderDemo() {
       setValueB(value);
     }
   }
-  function onChange({ input, value }) {
+  function onChange({ input, value, previous }) {
     if (!input) {
-      console.log(`Final input change to ${value}`);
+      console.log(`Final input change from ${previous} to ${value}`);
       setValueC(value);
     }
   }

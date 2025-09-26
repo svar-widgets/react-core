@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
+import { useWritableProp } from '@svar-ui/lib-react';
 import { uid } from '@svar-ui/lib-dom';
 import './Switch.css';
 
@@ -8,7 +9,7 @@ export default function Switch({
   disabled = false,
   onChange,
 }) {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useWritableProp(initialValue);
 
   const handleChange = useCallback(
     (event) => {

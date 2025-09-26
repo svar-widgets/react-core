@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
   {
-    ignores: ['dist', 'dist-demos', 'vite.config.js'],
+    ignores: ['dist', 'dist-demos', 'dist-full', 'src/libs', 'vite.config.js'],
   },
   {
     files: ['**/*.{js,jsx}'],
@@ -24,6 +24,12 @@ export default [
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
         requestAnimationFrame: 'readonly',
+        ResizeObserver: 'readonly',
+        getComputedStyle: 'readonly',
+        FileReader: 'readonly',
+        localStorage: 'readonly',
+        fetch: 'readonly',
+        FormData: 'readonly',
       },
     },
     plugins: {

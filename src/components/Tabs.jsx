@@ -26,6 +26,7 @@ const Tabs = ({
             'wx-138fWJ ' +
             `wx-tab ${option.css} ${option.id === value ? 'wx-active' : ''}`
           }
+          title={option.title}
           onClick={() => handleClick(option.id)}
         >
           {option.icon && (

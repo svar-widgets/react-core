@@ -1,6 +1,6 @@
 {
   "name": "@svar-ui/react-core",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "SVAR React Core library is a collection of customizable React UI components and form controls",
   "productTag": "core",
   "type": "module",
@@ -21,6 +21,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:demo": "BUILD_DEMOS=true vite build",
+    "build:full-css": "BUILD_FULL_CSS=true vite build",
     "lint": "eslint . --report-unused-disable-directives",
     "preview": "vite preview",
     "prepare": "husky",
@@ -28,25 +29,30 @@
   },
   "exports": {
     ".": {
+      "types": "./types/index.d.ts",
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js",
       "default": "./dist/index.es.js"
     },
-    "./style.css": "./dist/index.css"
+    "./style.css": "./dist/index.css",
+    "./all.css": "./dist-full/index.css"
   },
+  "types": "./types/index.d.ts",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
   "sideEffects": false,
   "files": [
     "dist",
-    "package.json"
+    "types",
+    "package.json",
+    "dist-full/index.css"
   ],
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
   },
   "dependencies": {
-    "@svar-ui/core-locales": "2.2.1",
+    "@svar-ui/core-locales": "^2.3.0",
     "@svar-ui/lib-dom": "0.9.2",
     "@svar-ui/lib-react": "1.1.1"
   },

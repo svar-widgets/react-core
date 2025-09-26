@@ -1,5 +1,6 @@
 import { useContext, useRef, useEffect, useState } from 'react';
 import { theme as themeContext } from '../context.js';
+import { env } from '@svar-ui/lib-dom';
 import { createPortal } from 'react-dom';
 
 function Portal({ theme: initialTheme = '', target, children }) {
@@ -15,7 +16,9 @@ function Portal({ theme: initialTheme = '', target, children }) {
 
   useEffect(() => {
     setTargetRef(
-      target || getParentRoot(componentRef.current) || document.body,
+      target ||
+        getParentRoot(componentRef.current) ||
+        env.getTopNode(componentRef.current),
     );
   }, [componentRef.current]);
 
@@ -39,7 +42,8 @@ function Portal({ theme: initialTheme = '', target, children }) {
 export default Portal;
 
 function getParentRoot(p) {
-  while (p && p !== document.body && !p.getAttribute('data-wx-portal-root')) {
+  const root = env.getTopNode(p);
+  while (p && p !== root && !p.getAttribute('data-wx-portal-root')) {
     p = p.parentNode;
   }
   return p;

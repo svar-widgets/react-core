@@ -1,40 +1,29 @@
 import { useState, useEffect, useCallback } from 'react';
 import { HashRouter, NavLink, useNavigate } from 'react-router-dom';
-import {
-  Globals,
-  Material,
-  Willow,
-  WillowDark,
-  Button,
-  Segmented,
-} from '../../src/index.js';
+
 import Router from './Router';
 import { links } from '../routes';
 import { GitHubLogoIcon, LogoIcon } from '../assets/icons';
 import './Index.css';
 
-const skins = [
-  { id: 'willow', label: 'Willow', props: {} },
-  { id: 'willow-dark', label: 'Dark', props: {} },
-];
-
-if (document.location.hostname !== 'docs.svar.dev') {
-  skins.unshift({
-    id: 'material',
-    label: 'Material',
-    props: {},
-  });
-}
-
-function DemoExplorerContent() {
+function DemoExplorerContent({
+  productTag,
+  publicName,
+  skins,
+  Globals,
+  Button,
+  Segmented,
+}) {
   const navigate = useNavigate();
-  const [skin, setSkin] = useState('willow');
+  const [skin, setSkin] = useState(skins[0].id);
   const [title, setTitle] = useState('');
   const [githubLink, setGithubLink] = useState('');
   const [show, setShow] = useState(true);
 
   const baseLink =
-    'https://github.com/svar-widgets/react-core/tree/main/demos/cases/';
+    'https://github.com/svar-widgets/react-' +
+    productTag +
+    '/tree/main/demos/cases/';
 
   useEffect(() => {
     document.body.className = `wx-willow-theme`;
@@ -54,8 +43,8 @@ function DemoExplorerContent() {
       const matched = links.find((a) => a[0] === targetPage);
       if (matched) {
         setTitle(matched[1]);
-        const name = matched[1] || '';
-        setGithubLink(`${baseLink}${name.replace(/\s+/g, '')}.jsx`);
+        const name = matched[3] || matched[1];
+        setGithubLink(`${baseLink}${name}.jsx`);
       }
     },
     [skin],
@@ -92,11 +81,11 @@ function DemoExplorerContent() {
               </a>
               <div className="wx-demos separator"></div>
               <a
-                href="https://svar.dev/react/core/"
+                href={`https://svar.dev/react/${productTag}/`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <h1 className="wx-demos title">React Core</h1>
+                <h1 className="wx-demos title">React {publicName}</h1>
               </a>
             </div>
             <div className="wx-demos btn-box">
@@ -179,14 +168,15 @@ function DemoExplorerContent() {
   );
 }
 
-export default function DemoExplorer() {
+export default function DemoExplorer(props) {
+  const skins = props.skins;
   return (
     <>
-      <Material />
-      <Willow />
-      <WillowDark />
+      {skins.map((skin) => (
+        <skin.Component key={skin.id} />
+      ))}
       <HashRouter>
-        <DemoExplorerContent />
+        <DemoExplorerContent {...props} />
       </HashRouter>
     </>
   );

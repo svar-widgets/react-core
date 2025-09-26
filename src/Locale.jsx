@@ -10,7 +10,7 @@ export default function Component(props) {
   const v = useMemo(() => {
     let t = l;
     if (!t || !t.extend) t = locale(en);
-    t = t.extend(words, optional);
+    if (words !== null) t = t.extend(words, optional);
     return t;
   }, [words, optional, l]);
 

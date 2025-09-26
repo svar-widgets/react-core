@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
+import { useWritableProp } from '@svar-ui/lib-react';
 import { uid } from '@svar-ui/lib-dom';
 import './Slider.css';
 
@@ -14,8 +15,8 @@ export default function Slider({
   disabled = false,
   onChange,
 }) {
-  const [value, setValue] = useState(initialValue);
-  const [previous, setPrevious] = useState(value);
+  const [value, setValue] = useWritableProp(initialValue);
+  const previous = useRef({ value: value, input: value });
 
   const progress = useMemo(
     () => ((value - min) / (max - min)) * 100 + '%',
@@ -29,24 +30,40 @@ export default function Slider({
   }, [disabled, progress]);
 
   function oninput({ target }) {
-    const newValue = target.value || 0;
+    const newValue = target.value * 1;
     setValue(newValue);
-    if (previous !== newValue) {
-      onChange && onChange({ value: newValue, previous, input: true });
-      setPrevious(newValue);
-    }
+    onChange &&
+      onChange({
+        value: newValue,
+        previous: previous.current.input,
+        input: true,
+      });
+    previous.current.input = newValue;
   }
 
   function onslider({ target }) {
     const newValue = target.value * 1;
     setValue(newValue);
-    onChange && onChange({ value: newValue });
+    onChange && onChange({ value: newValue, previous: previous.current.value });
+    previous.current.value = newValue;
   }
 
   // Sync if props.value changes externally
   useEffect(() => {
     setValue(initialValue);
   }, [initialValue]);
+
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.addEventListener('change', onslider);
+      return () => {
+        if (inputRef.current) {
+          inputRef.current.removeEventListener('change', onslider);
+        }
+      };
+    }
+  }, [inputRef]);
 
   return (
     <div className={`wx-2EDJ8G wx-slider ${css}`} title={title}>
@@ -66,8 +83,8 @@ export default function Slider({
           disabled={disabled}
           value={value}
           onInput={oninput}
-          onChange={onslider}
           style={{ background: bgStyle }}
+          ref={inputRef}
         />
       </div>
     </div>

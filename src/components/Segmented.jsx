@@ -33,7 +33,7 @@ const Segmented = ({
             'wx-0hMO7P' +
             ` wx-segment ${option.css} ${option.id === internalValue ? 'wx-selected' : ''}`
           }
-          title={option.title || option.label}
+          title={option.title}
           onClick={() => handleClick(option.id)}
         >
           {children ? (
