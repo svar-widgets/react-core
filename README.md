@@ -18,7 +18,7 @@
 
 </div>
 
-**SVAR React Core** is a lightweight, fast, and mobile-friendly React component library that offers 20+ reusable, pre-styled UI components. It includes form controls, popups, date & time pickers, toast notifications, and more. All components are customizable, support light and dark themes out of the box, and come with full TypeScript support. 
+**SVAR React Core** is a lightweight, fast, and mobile-friendly React component library that offers 20+ reusable, pre-styled UI components. It includes form controls, popups, date & time pickers, toast notifications, and more. All components are customizable, support light and dark themes, and come with full TypeScript support. 
 
 The library is fully compatible with React 18 and 19.
 
