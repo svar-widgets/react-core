@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Field, Slider } from '../../src/index';
 
 export default function SliderDemo() {
-  const [valueA, setValueA] = useState(50);
   const [valueB, setValueB] = useState(50);
   const [valueC, setValueC] = useState(50);
 
@@ -22,16 +21,6 @@ export default function SliderDemo() {
   return (
     <div className="wx-24lPdP demo-box">
       <h3>Slider</h3>
-      <Field label="Updates from binding" position="left" type="slider">
-        {({ id }) => (
-          <Slider
-            id={id}
-            label={`Progress: ${valueA}%`}
-            value={valueA}
-            onChange={({ value }) => setValueA(value)}
-          />
-        )}
-      </Field>
       <Field
         label="Updates from input 'change' event"
         position="left"

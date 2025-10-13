@@ -63,7 +63,7 @@ export default function Slider({
         }
       };
     }
-  }, [inputRef]);
+  }, [inputRef, onslider]);
 
   return (
     <div className={`wx-2EDJ8G wx-slider ${css}`} title={title}>
