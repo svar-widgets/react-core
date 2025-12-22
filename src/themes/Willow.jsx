@@ -8,7 +8,7 @@ export default function render(props) {
     <theme.Provider value="willow">
       <>
         {children && children && (
-          <div className="wx-willow-theme">{children}</div>
+          <div className="wx-theme wx-willow-theme">{children}</div>
         )}
 
         {fonts && (

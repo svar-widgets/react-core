@@ -1,0 +1,25 @@
+.wx-13aa5W.wx-fullscreen::backdrop {
+  background-color: var(--wx-background);
+}
+.wx-13aa5W.wx-fullscreen {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  outline: none;
+}
+.wx-13aa5W.wx-fullscreen-icon {
+  font-size: 20px;
+  height: 20px;
+  margin: auto;
+}
+.wx-13aa5W.wx-fullscreen .wx-fullscreen-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  right: 25px;
+  bottom: 35px;
+  display: flex;
+  padding: initial;
+}

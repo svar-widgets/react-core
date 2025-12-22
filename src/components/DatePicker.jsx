@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useContext } from 'react';
-import { uid, dateToString } from '@svar-ui/lib-dom';
+import { dateToString } from '@svar-ui/lib-dom';
 import { i18n } from '../context.js';
 
 import Text from './Text.jsx';
@@ -12,7 +12,7 @@ const defaultButtons = ['clear', 'today'];
 
 export default function DatePicker({
   value: propValue,
-  id = uid(),
+  id,
   disabled = false,
   error = false,
   width = 'unset',

@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { uid } from '@svar-ui/lib-dom';
 import { snippet } from '@svar-ui/lib-react';
+import { fieldId } from "../context";
 import './Field.css';
 
 export default function Field({
@@ -15,17 +16,19 @@ export default function Field({
   const id = useMemo(() => uid(), []);
 
   return (
-    <div
-      className={`wx-2oVUvC wx-field wx-${position} ${css} ${error ? 'wx-error' : ''} ${required ? 'wx-required' : ''}`.trim()}
-    >
-      {label && (
-        <label className="wx-2oVUvC wx-label" htmlFor={id}>
-          {label}
-        </label>
-      )}
-      <div className={`wx-2oVUvC wx-field-control wx-${type}`}>
-        {snippet(children, { id })}
+    <fieldId.Provider value={id}>
+      <div
+        className={`wx-2oVUvC wx-field wx-${position} ${css} ${error ? 'wx-error' : ''} ${required ? 'wx-required' : ''}`.trim()}
+      >
+        {label && (
+          <label className="wx-2oVUvC wx-label" htmlFor={id}>
+            {label}
+          </label>
+        )}
+        <div className={`wx-2oVUvC wx-field-control wx-${type}`}>
+          {snippet(children, { id })}
+        </div>
       </div>
-    </div>
+    </fieldId.Provider>
   );
 }

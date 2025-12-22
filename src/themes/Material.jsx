@@ -7,7 +7,7 @@ export default function render(props) {
   return (
     <theme.Provider value="material">
       <>
-        {children && <div className="wx-material-theme">{children}</div>}
+        {children && <div className="wx-theme wx-material-theme">{children}</div>}
 
         {fonts && (
           <>

@@ -23,23 +23,18 @@ export default function TimePickerDemo() {
       <div className="wx-28AwJ6 demo-box">
         <h3>TimePicker with a side label</h3>
         <Field label="Time" position="left">
-          {({ id }) => <TimePicker value={value} id={id} onChange={setValue} />}
+          <TimePicker value={value} onChange={setValue} />
         </Field>
         <Field label="Disabled" position="left">
-          {({ id }) => (
-            <TimePicker value={value} disabled id={id} onChange={setValue} />
-          )}
+          <TimePicker value={value} disabled onChange={setValue} />
         </Field>
         <Field label="Error" position="left" error>
-          {({ id }) => (
-            <TimePicker
-              value={value}
-              error
-              id={id}
-              title="Invalid option"
-              onChange={setValue}
-            />
-          )}
+          <TimePicker
+            value={value}
+            error
+            title="Invalid option"
+            onChange={setValue}
+          />
         </Field>
       </div>
 

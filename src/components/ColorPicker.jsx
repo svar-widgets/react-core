@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { uid } from '@svar-ui/lib-dom';
 import Dropdown from './Dropdown.jsx';
 import ColorBoard from './ColorBoard.jsx';
 import { useWritableProp } from '@svar-ui/lib-react';
+import { useInputId } from './helpers/getInputId.js';
 
 import './ColorPicker.css';
 
 export default function ColorPicker({
   value: propertyValue = '',
-  id = undefined,
+  id,
   placeholder = '',
   title = '',
   disabled = false,
@@ -16,10 +16,9 @@ export default function ColorPicker({
   clear = false,
   onChange,
 }) {
+  const inputId = useInputId(id);
   let [value, setValue] = useWritableProp(propertyValue);
   const [popup, setPopup] = useState(false);
-
-  const finalId = id || uid();
 
   function handlePopup() {
     if (disabled) return false;
@@ -52,7 +51,7 @@ export default function ColorPicker({
         title={title}
         value={value}
         readOnly
-        id={finalId}
+        id={inputId}
         placeholder={placeholder}
         disabled={disabled}
       />

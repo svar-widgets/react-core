@@ -45,13 +45,13 @@ export default function CheckboxDemo() {
       <div className="wx-1WSziR demo-box">
         <h3>Checkbox with a side label</h3>
         <Field label="Checkbox" type="checkbox" position="left">
-          {({ id }) => <Checkbox id={id} />}
+          <Checkbox />
         </Field>
         <Field label="Disabled" type="checkbox" position="left">
-          {({ id }) => <Checkbox label="Default" disabled id={id} />}
+          <Checkbox label="Default" disabled />
         </Field>
         <Field label="Disabled" type="checkbox" position="left">
-          {({ id }) => <Checkbox label="Checked" disabled id={id} />}
+          <Checkbox label="Checked" disabled />
         </Field>
       </div>
 

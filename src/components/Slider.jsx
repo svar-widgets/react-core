@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useWritableProp } from '@svar-ui/lib-react';
-import { uid } from '@svar-ui/lib-dom';
+import { useInputId } from './helpers/getInputId.js';
 import './Slider.css';
 
 export default function Slider({
-  id = uid(),
+  id,
   label = '',
   css = '',
   min = 0,
@@ -15,6 +15,7 @@ export default function Slider({
   disabled = false,
   onChange,
 }) {
+  const inputId = useInputId(id);
   const [value, setValue] = useWritableProp(initialValue);
   const previous = useRef({ value: value, input: value });
 
@@ -68,13 +69,13 @@ export default function Slider({
   return (
     <div className={`wx-2EDJ8G wx-slider ${css}`} title={title}>
       {label && (
-        <label className="wx-2EDJ8G wx-label" htmlFor={id}>
+        <label className="wx-2EDJ8G wx-label" htmlFor={inputId}>
           {label}
         </label>
       )}
       <div className="wx-2EDJ8G wx-inner">
         <input
-          id={id}
+          id={inputId}
           className="wx-2EDJ8G wx-input"
           type="range"
           min={min}

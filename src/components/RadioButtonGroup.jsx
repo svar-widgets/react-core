@@ -1,7 +1,9 @@
 import { uid } from '@svar-ui/lib-dom';
 import { useState, useEffect } from 'react';
 import RadioButton from './RadioButton.jsx';
+import { fieldId } from "../context";
 import './RadioButtonGroup.css';
+
 
 export default function RadioButtonGroup({
   options = [{}],
@@ -26,18 +28,20 @@ export default function RadioButtonGroup({
   }
 
   return (
-    <div className={`wx-38w70j wx-radiogroup ${type && `wx-${type}`}`}>
-      {options.map((option) => (
-        <div key={option.id} className="wx-38w70j wx-item">
-          <RadioButton
-            label={option.label}
-            inputValue={option.id}
-            value={currentValue === option.id}
-            name={name}
-            onChange={handleChange}
-          />
-        </div>
-      ))}
-    </div>
+    <fieldId.Provider value={null}>
+      <div className={`wx-38w70j wx-radiogroup ${type && `wx-${type}`}`}>
+        {options.map((option) => (
+          <div key={option.id} className="wx-38w70j wx-item">
+            <RadioButton
+              label={option.label}
+              inputValue={option.id}
+              value={currentValue === option.id}
+              name={name}
+              onChange={handleChange}
+            />
+          </div>
+        ))}
+      </div>
+    </fieldId.Provider>
   );
 }

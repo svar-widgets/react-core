@@ -34,23 +34,18 @@ export default function RichSelectExamples() {
       <div className="wx-1Ca119 demo-box">
         <h3>RichSelect with a side label</h3>
         <Field label="Owner" position="left">
-          {({ id }) => <RichSelect options={users} id={id} value={104} />}
+          <RichSelect options={users} value={104} />
         </Field>
         <Field label="Disabled" position="left">
-          {({ id }) => (
-            <RichSelect options={users} id={id} disabled value={104} />
-          )}
+          <RichSelect options={users} disabled value={104} />
         </Field>
         <Field label="Error" position="left" error>
-          {({ id }) => (
-            <RichSelect
-              options={users}
-              id={id}
-              error
-              value={104}
-              title="Invalid option"
-            />
-          )}
+          <RichSelect
+            options={users}
+            error
+            value={104}
+            title="Invalid option"
+          />
         </Field>
       </div>
 

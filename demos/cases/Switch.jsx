@@ -17,12 +17,10 @@ export default function SwitchDemo() {
       <div className="wx-1fqWan demo-box">
         <h3>Switch Button with a side label</h3>
         <Field label={`Switch: ${v2}`} position="left" type="switch">
-          {({ id }) => (
-            <Switch value={v2} onChange={(e) => setV2(e.value)} id={id} />
-          )}
+          <Switch value={v2} onChange={(e) => setV2(e.value)} />
         </Field>
         <Field label="Disabled" position="left" type="switch">
-          {({ id }) => <Switch disabled id={id} />}
+          <Switch disabled />
         </Field>
       </div>
     </>

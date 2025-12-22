@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { uid } from '@svar-ui/lib-dom';
+import { useInputId } from './helpers/getInputId.js';
 import Dropdown from './Dropdown.jsx';
 import './ColorSelect.css';
 
@@ -17,13 +17,14 @@ export default function ColorSelect({
   colors = defaultColors,
   value = '',
   onChange,
-  id = uid(),
+  id,
   clear = false,
   placeholder = '',
   title = '',
   disabled = false,
   error = false,
 }) {
+  const inputId = useInputId(id);
   const [currentValue, setCurrentValue] = useState(value);
   const [popup, setPopup] = useState(false);
 
@@ -62,7 +63,7 @@ export default function ColorSelect({
         title={title}
         value={currentValue}
         readOnly
-        id={id}
+        id={inputId}
         placeholder={placeholder}
         disabled={disabled}
       />

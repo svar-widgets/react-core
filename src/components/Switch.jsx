@@ -1,14 +1,15 @@
 import { useCallback } from 'react';
 import { useWritableProp } from '@svar-ui/lib-react';
-import { uid } from '@svar-ui/lib-dom';
+import { useInputId } from './helpers/getInputId.js';
 import './Switch.css';
 
 export default function Switch({
-  id: initialId = uid(),
+  id,
   value: initialValue = false,
   disabled = false,
   onChange,
 }) {
+  const inputId = useInputId(id);
   const [value, setValue] = useWritableProp(initialValue);
 
   const handleChange = useCallback(
@@ -28,7 +29,7 @@ export default function Switch({
         checked={value}
         onChange={handleChange}
         disabled={disabled}
-        id={initialId}
+        id={inputId}
       />
       <span className="wx-2dAR5c wx-box" />
     </label>

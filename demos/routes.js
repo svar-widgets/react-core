@@ -29,6 +29,7 @@ import Field from './cases/Field.jsx';
 import Segmented from './cases/Segmented.jsx';
 import Icon from './cases/Icon.jsx';
 import SideArea from './cases/SideArea.jsx';
+import Fullscreen from './cases/Fullscreen.jsx';
 import ModalArea from './cases/ModalArea.jsx';
 
 export const links = [
@@ -48,6 +49,7 @@ export const links = [
     'DateRangePicker',
   ],
   ['/field/:skin', 'Field', Field, 'Field'],
+  ['/fullscreen/:skin', 'Fullscreen', Fullscreen, 'Fullscreen'],
   ['/locales/:skin', 'Locales', Locales, 'Locales'],
   ['/messages/:skin', 'Messages', Messages, 'Messages'],
   ['/multicombo/:skin', 'MultiCombo', MultiCombo, 'MultiCombo'],

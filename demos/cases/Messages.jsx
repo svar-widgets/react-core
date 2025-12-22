@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { Modal, Text, TextArea, Button, context } from '../../src/index';
+import { Modal, Portal, Text, TextArea, Button, context } from '../../src/index';
 
 const Messages = () => {
   const { showNotice, showModal } = useContext(context.helpers);
@@ -72,9 +72,11 @@ const Messages = () => {
           Show Prompt
         </Button>
         {custom1 && (
-          <Modal title="Custom Prompt" onConfirm={hideAll} onCancel={hideAll}>
-            <Text select={true} focus={true} value="Some" />
-          </Modal>
+          <Portal>
+            <Modal title="Custom Prompt" onConfirm={hideAll} onCancel={hideAll}>
+              <Text select={true} focus={true} value="Some" />
+            </Modal>
+          </Portal>
         )}
 
         <Button onClick={() => setCustom2(!custom2)}>Show Dialog</Button>

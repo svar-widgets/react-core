@@ -25,59 +25,38 @@ export default function DateRangePickerDemo() {
     <div className="wx-2kEp5J demo-box">
       <h3>DateRangePicker</h3>
       <Field label="Date range">
-        {({ id }) => (
-          <DateRangePicker value={date} id={id} onChange={showChanges} />
-        )}
+        <DateRangePicker value={date} onChange={showChanges} />
       </Field>
       <Field label="DateRangePicker with the Done button">
-        {({ id }) => <DateRangePicker value={date} id={id} done={true} />}
+        <DateRangePicker value={date} done={true} />
       </Field>
       <Field label="With custom buttons">
-        {({ id }) => (
-          <DateRangePicker
-            value={date}
-            id={id}
-            buttons={['done', 'clear', 'today']}
-          />
-        )}
+        <DateRangePicker value={date} buttons={['done', 'clear', 'today']} />
       </Field>
       <Field label="Disabled">
-        {({ id }) => <DateRangePicker disabled value={date} id={id} />}
+        <DateRangePicker disabled value={date} />
       </Field>
       <Field label="Editable (new Date())">
-        {({ id }) => <DateRangePicker editable value={date} id={id} />}
+        <DateRangePicker editable value={date} />
       </Field>
       <Field label="Editable, custom format (MMDDYYYY - MMDDYYYY)">
-        {({ id }) => (
-          <DateRangePicker
-            editable={parseDate}
-            value={date}
-            format={'%m%d%Y'}
-            id={id}
-          />
-        )}
+        <DateRangePicker editable={parseDate} value={date} format={'%m%d%Y'} />
       </Field>
       <Field label="Error" error>
-        {({ id }) => (
-          <DateRangePicker error value={date} id={id} title="Invalid date" />
-        )}
+        <DateRangePicker error value={date} title="Invalid date" />
       </Field>
 
       <Field label="Custom format">
-        {({ id }) => (
-          <DateRangePicker format="%d %F, %Y" value={date} id={id} />
-        )}
+        <DateRangePicker format="%d %F, %Y" value={date} />
       </Field>
       <Field label="Custom icon position">
-        {({ id }) => (
-          <DateRangePicker id={id} value={date} css="wx-icon-left" />
-        )}
+        <DateRangePicker value={date} css="wx-icon-left" />
       </Field>
       <Field label="Single month">
-        {({ id }) => <DateRangePicker id={id} months={1} />}
+        <DateRangePicker months={1} />
       </Field>
       <Field label="Clear button">
-        {({ id }) => <DateRangePicker value={date} id={id} clear />}
+        <DateRangePicker value={date} clear />
       </Field>
     </div>
   );

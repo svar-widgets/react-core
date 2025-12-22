@@ -1,15 +1,19 @@
 import { useWritableProp } from '@svar-ui/lib-react';
-import { uid } from '@svar-ui/lib-dom';
+import { useInputId } from './helpers/getInputId.js';
+import { useId } from 'react';
 import './Checkbox.css';
 
 export default function Checkbox({
-  id = uid(),
+  id,
   label = '',
   inputValue = '',
   value: valueProp = false,
   onChange,
   disabled = false,
 }) {
+
+  const fallbackId = useId();
+  const inputId = useInputId(id) || fallbackId;
   const [value, setValue] = useWritableProp(valueProp);
 
   const handlerChange = ({ target }) => {
@@ -22,14 +26,14 @@ export default function Checkbox({
     <div className="wx-2IvefP wx-checkbox">
       <input
         type="checkbox"
-        id={id}
+        id={inputId}
         disabled={disabled}
         className="wx-2IvefP wx-check"
         checked={value}
         value={inputValue}
         onChange={handlerChange}
       />
-      <label htmlFor={id} className="wx-2IvefP wx-label">
+      <label htmlFor={inputId} className="wx-2IvefP wx-label">
         <span className="wx-2IvefP wx-before"></span>
         {label && <span className="wx-2IvefP wx-after">{label}</span>}
       </label>

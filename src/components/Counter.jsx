@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 import { useWritableProp } from '@svar-ui/lib-react';
-import { uid } from '@svar-ui/lib-dom';
+import { useInputId } from './helpers/getInputId.js';
 import './Counter.css';
 
 const Counter = ({
-  id = uid(),
+  id,
   value: initialValue = 0,
   step = 1,
   min = 0,
@@ -14,6 +14,7 @@ const Counter = ({
   readonly = false,
   onChange,
 }) => {
+  const inputId = useInputId(id);
   const [value, setValue] = useWritableProp(initialValue);
 
   const dec = useCallback(() => {
@@ -74,7 +75,7 @@ const Counter = ({
         </svg>
       </button>
       <input
-        id={id}
+        id={inputId}
         type="text"
         className={'wx-22t21n ' + 'wx-input'}
         disabled={disabled}

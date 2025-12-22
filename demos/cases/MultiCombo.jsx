@@ -35,23 +35,18 @@ export default function Component() {
       <div className="wx-R7lgfw demo-box">
         <h3>MultiCombo with a side label</h3>
         <Field label="Owner" position="left">
-          {({ id }) => <MultiCombo options={users} id={id} value={[104]} />}
+          <MultiCombo options={users} value={[104]} />
         </Field>
         <Field label="Disabled" position="left">
-          {({ id }) => (
-            <MultiCombo options={users} disabled id={id} value={[104]} />
-          )}
+          <MultiCombo options={users} disabled value={[104]} />
         </Field>
         <Field label="Error" error position="left">
-          {({ id }) => (
-            <MultiCombo
-              title="Invalid option"
-              options={users}
-              error
-              id={id}
-              value={[104]}
-            />
-          )}
+          <MultiCombo
+            title="Invalid option"
+            options={users}
+            error
+            value={[104]}
+          />
         </Field>
       </div>
 

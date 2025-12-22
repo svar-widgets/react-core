@@ -13,7 +13,6 @@ const skins = [
 ];
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <App
       publicName="Core"
       skins={skins}
@@ -22,5 +21,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       Button={Button}
       Segmented={Segmented}
     />
-  </React.StrictMode>,
 );

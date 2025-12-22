@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { clickOutside, env } from '@svar-ui/lib-dom';
+import { useWritableProp } from '@svar-ui/lib-react';
 import './Dropdown.css';
 
 function Dropdown({
@@ -12,16 +13,8 @@ function Dropdown({
 }) {
   const nodeRef = useRef(null);
 
-  const [positionState, setPosition] = useState(position);
-  const [alignState, setAlign] = useState(align);
-
-  useEffect(() => {
-    setPosition(position);
-  }, [position]);
-
-  useEffect(() => {
-    setAlign(align);
-  }, [align]);
+  const [positionState, setPosition] = useWritableProp(position);
+  const [alignState, setAlign] = useWritableProp(align);
 
   useEffect(() => {
     if (autoFit) {
@@ -39,13 +32,13 @@ function Dropdown({
         }
       }
     }
-  }, [autoFit, alignState, positionState]);
+  }, [autoFit]);
 
   useEffect(() => {
-    const down = (e) => {
-      onCancel && onCancel(e);
-    };
     if (nodeRef.current) {
+      const down = (e) => {
+        onCancel && onCancel(e);
+      };
       return clickOutside(nodeRef.current, down).destroy;
     }
   }, [onCancel]);

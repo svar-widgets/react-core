@@ -26,30 +26,24 @@ export default function SliderDemo() {
         position="left"
         type="slider"
       >
-        {({ id }) => (
-          <Slider
-            id={id}
-            label={`Progress: ${valueB}%`}
-            value={valueB}
-            onChange={onInput}
-          />
-        )}
+        <Slider
+          label={`Progress: ${valueB}%`}
+          value={valueB}
+          onChange={onInput}
+        />
       </Field>
       <Field label="Updates from 'change' event" position="left" type="slider">
-        {({ id }) => (
-          <Slider
-            id={id}
-            label={`Progress: ${valueC}%`}
-            value={valueC}
-            onChange={onChange}
-          />
-        )}
+        <Slider
+          label={`Progress: ${valueC}%`}
+          value={valueC}
+          onChange={onChange}
+        />
       </Field>
       <Field label="Disabled" position="left" type="slider">
-        {({ id }) => <Slider disabled id={id} value={20} />}
+        <Slider disabled value={20} />
       </Field>
       <Field label="Unset value" position="left" type="slider">
-        {({ id }) => <Slider id={id} title="Default slider's value is 0" />}
+        <Slider title="Default slider's value is 0" />
       </Field>
     </div>
   );

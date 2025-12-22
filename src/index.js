@@ -8,6 +8,7 @@ export { default as ColorPicker } from './components/ColorPicker.jsx';
 export { default as Combo } from './components/Combo.jsx';
 export { default as DatePicker } from './components/DatePicker.jsx';
 export { default as DateRangePicker } from './components/DateRangePicker.jsx';
+export { default as Fullscreen } from './components/Fullscreen.jsx';
 export { default as Icon } from './components/Icon.jsx';
 export { default as MultiCombo } from './components/MultiCombo.jsx';
 export { default as Popup } from './components/Popup.jsx';

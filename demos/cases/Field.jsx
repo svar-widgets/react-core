@@ -18,27 +18,47 @@ export default function Component() {
       <div className="wx-1y9ERZ demo-box">
         <h3>Top Fields</h3>
         <Field label="Text">
-          {({ id }) => <Text value={v1} onChange={setV1} id={id} />}
+          <Text value={v1} onChange={setV1} />
         </Field>
         <Field label="Error" error>
-          {({ id }) => <Text value={v1} onChange={setV1} id={id} error />}
+          <Text value={v1} onChange={setV1} error />
         </Field>
         <Field label="Required" required>
-          {({ id }) => <Text value={v1} onChange={setV1} id={id} />}
+          <Text value={v1} onChange={setV1} />
         </Field>
       </div>
 
       <div className="wx-1y9ERZ demo-box">
         <h3>Left Field</h3>
         <Field label="Text" position="left">
-          {({ id }) => <Text value={v2} onChange={setV2} id={id} />}
+          <Text value={v2} onChange={setV2} />
         </Field>
         <Field label="Error" position="left" error>
-          {({ id }) => <Text value={v2} onChange={setV2} id={id} error />}
+          <Text value={v2} onChange={setV2} error />
         </Field>
         <Field label="Required" position="left" required>
-          {({ id }) => <Text value={v2} onChange={setV2} id={id} />}
+          <Text value={v2} onChange={setV2} />
         </Field>
+      </div>
+
+      <div className="wx-1y9ERZ demo-box">
+        <h3>Field with multiple inputs</h3>
+        <Field label="Text" position="left">
+          <Text placeholder="This gets associated label" /><br />
+          <Text placeholder="This one does not" />
+        </Field>
+      </div>
+
+      <div className="wx-1y9ERZ demo-box">
+        <h3>Nested Fields controls</h3>
+        <Field label="Each control is associated with its closest Field label">
+        <Field label="First Name" position="left">
+          <Text />
+        </Field>
+        <Field label="Last Name" position="left">
+          <Text />
+        </Field>
+      </Field>
       </div>
     </>
   );

@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useMemo } from 'react';
-import { uid } from '@svar-ui/lib-dom';
 import { useWritableProp } from '@svar-ui/lib-react';
+import { useInputId } from './helpers/getInputId.js';
 import './Text.css';
 
 export default function Text({
   value: propsValue = '',
-  id: propsId = uid(),
+  id,
   readonly = false,
   focus = false,
   select = false,
@@ -20,6 +20,7 @@ export default function Text({
   clear = false,
   onChange,
 }) {
+  const inputId = useInputId(id);
   const [value, setValue] = useWritableProp(propsValue);
   const inputRef = useRef(null);
 
@@ -89,7 +90,7 @@ export default function Text({
       <input
         className="wx-hQ64J4 wx-input"
         ref={inputRef}
-        id={propsId}
+        id={inputId}
         readOnly={readonly}
         disabled={disabled}
         placeholder={placeholder}

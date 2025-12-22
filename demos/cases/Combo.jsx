@@ -55,7 +55,7 @@ const ComboDemo = () => {
       <div className="wx-2RGIOJ demo-box">
         <h3>Combo with a side label</h3>
         <Field label="Owner" position="left">
-          {({ id }) => <Combo options={users} id={id} value={104} />}
+          <Combo options={users} value={104} />
         </Field>
       </div>
 

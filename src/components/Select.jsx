@@ -1,5 +1,5 @@
-import { uid } from '@svar-ui/lib-dom';
 import { useState, useCallback } from 'react';
+import { useInputId } from './helpers/getInputId.js';
 import './Select.css';
 
 export default function Select({
@@ -11,9 +11,10 @@ export default function Select({
   error = false,
   textField = 'label',
   clear = false,
-  id = uid(),
+  id,
   onChange,
 }) {
+  const inputId = useInputId(id);
   const [value, setValue] = useState(valueProp || '');
 
   const handleChange = useCallback(
@@ -33,7 +34,7 @@ export default function Select({
   return (
     <div className="wx-2yx1Fo wx-select-box">
       <select
-        id={id}
+        id={inputId}
         value={value}
         disabled={disabled}
         className={`wx-2yx1Fo wx-select ${error ? 'wx-2yx1Fo wx-error' : ''}`}

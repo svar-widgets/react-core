@@ -18,127 +18,83 @@ export default function Component() {
       <div className="wx-2G3DEY demo-box">
         <h3>Text with a top label</h3>
         <Field label="First name">
-          {({ id }) => (
-            <Text
-              value={text2}
-              onChange={setText}
-              id={id}
-              placeholder="Type here"
-            />
-          )}
+          <Text value={text2} onChange={setText} placeholder="Type here" />
         </Field>
         <Field label="Last name">
-          {({ id }) => (
-            <Text
-              value={text2}
-              onChange={setText}
-              id={id}
-              placeholder="Type here"
-            />
-          )}
+          <Text value={text2} onChange={setText} placeholder="Type here" />
         </Field>
         <Field label="Last name">
-          {({ id }) => (
-            <Text
-              value={text2}
-              onChange={setText}
-              id={id}
-              disabled
-              placeholder="Type here"
-            />
-          )}
+          <Text
+            value={text2}
+            onChange={setText}
+            disabled
+            placeholder="Type here"
+          />
         </Field>
         <Field label="Last name" error>
-          {({ id }) => (
-            <Text
-              value={text2}
-              onChange={setText}
-              id={id}
-              error
-              placeholder="Type here"
-              title="Invalid value"
-            />
-          )}
+          <Text
+            value={text2}
+            onChange={setText}
+            error
+            placeholder="Type here"
+            title="Invalid value"
+          />
         </Field>
       </div>
 
       <div className="wx-2G3DEY demo-box">
         <h3>Text with a side label</h3>
         <Field label="First name" position="left">
-          {({ id }) => <Text value={text2} onChange={setText} id={id} />}
+          <Text value={text2} onChange={setText} />
         </Field>
         <Field label="Last name" position="left">
-          {({ id }) => <Text value={text2} onChange={setText} id={id} />}
+          <Text value={text2} onChange={setText} />
         </Field>
       </div>
 
       <div className="wx-2G3DEY demo-box">
         <h3>Number input with a side label</h3>
         <Field label="Number" position="left">
-          {({ id }) => (
-            <Text
-              type="number"
-              value={password2}
-              onChange={setPassword}
-              id={id}
-            />
-          )}
+          <Text type="number" value={password2} onChange={setPassword} />
         </Field>
       </div>
 
       <div className="wx-2G3DEY demo-box">
         <h3>Password input with a side label</h3>
         <Field label="Password" position="left">
-          {({ id }) => (
-            <Text
-              type="password"
-              value={password2}
-              onChange={setPassword}
-              id={id}
-            />
-          )}
+          <Text type="password" value={password2} onChange={setPassword} />
         </Field>
       </div>
 
       <div className="wx-2G3DEY demo-box">
         <h3>Icon inside of the text control</h3>
         <Field label="Start Date" position="top">
-          {({ id }) => <Text id={id} icon="wxi-calendar" css="wx-icon-left" />}
+          <Text icon="wxi-calendar" css="wx-icon-left" />
         </Field>
         <Field label="End Date" position="top">
-          {({ id }) => <Text id={id} icon="wxi-calendar" />}
+          <Text icon="wxi-calendar" />
         </Field>
       </div>
 
       <div className="wx-2G3DEY demo-box">
         <h3>Text control with clear button</h3>
         <Field label="First name" position="top">
-          {({ id }) => <Text id={id} placeholder="Type here" clear />}
+          <Text placeholder="Type here" clear />
         </Field>
         <Field label="Number" position="top">
-          {({ id }) => <Text id={id} type="number" clear />}
+          <Text type="number" clear />
         </Field>
         <Field label="Number and icon" position="top">
-          {({ id }) => <Text id={id} type="number" clear icon="wxi-calendar" />}
+          <Text type="number" clear icon="wxi-calendar" />
         </Field>
         <Field label="Number and icon left" position="top">
-          {({ id }) => (
-            <Text
-              id={id}
-              type="number"
-              clear
-              icon="wxi-calendar"
-              css="wx-icon-left"
-            />
-          )}
+          <Text type="number" clear icon="wxi-calendar" css="wx-icon-left" />
         </Field>
         <Field label="End Date" position="top">
-          {({ id }) => <Text id={id} icon="wxi-calendar" clear />}
+          <Text icon="wxi-calendar" clear />
         </Field>
         <Field label="Start Date" position="top">
-          {({ id }) => (
-            <Text id={id} icon="wxi-calendar" css="wx-icon-left" clear />
-          )}
+          <Text icon="wxi-calendar" css="wx-icon-left" clear />
         </Field>
       </div>
     </>

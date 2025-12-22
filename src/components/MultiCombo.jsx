@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useCallback } from 'react';
-import { uid } from '@svar-ui/lib-dom';
 import { useWritableProp, snippet } from '@svar-ui/lib-react';
+import { useInputId } from './helpers/getInputId.js';
 import List from './helpers/SuggestDropdown.jsx';
 import Checkbox from './Checkbox.jsx';
 import './MultiCombo.css';
@@ -8,9 +8,8 @@ import './MultiCombo.css';
 const defaultValue = [];
 
 export default function MultiCombo({
-  id = uid(),
+  id,
   value: valueProp = defaultValue,
-  onValueChange,
   options = [],
   textOptions = null,
   textField = 'label',
@@ -22,6 +21,7 @@ export default function MultiCombo({
   onChange,
   children,
 }) {
+  const inputId = useInputId(id);
   const navigate = useRef(null);
   const keydown = useRef(null);
 
@@ -71,13 +71,12 @@ export default function MultiCombo({
         }
 
         setValue(next);
-        if (onValueChange) onValueChange(next);
         onChange && onChange({ value: next });
 
         inputElement.current.focus();
       }
     },
-    [value, onValueChange, onChange],
+    [value, onChange],
   );
 
   const remove = useCallback(
@@ -86,10 +85,9 @@ export default function MultiCombo({
 
       const next = value.filter((i) => i !== id);
       setValue(next);
-      if (onValueChange) onValueChange(next);
       onChange && onChange({ value: next });
     },
-    [value, onValueChange, onChange],
+    [value, onChange],
   );
 
   const index = useCallback(
@@ -134,7 +132,7 @@ export default function MultiCombo({
         <div className="wx-12Wj21 wx-select">
           <input
             className="wx-12Wj21 wx-input"
-            id={id}
+            id={inputId}
             type="text"
             value={text}
             onChange={(ev) => setText(ev.target.value)}

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useContext } from 'react';
 import { snippet } from '@svar-ui/lib-react';
 import { getListHandlers } from './listnav';
@@ -36,16 +36,20 @@ export default function SuggestDropdown({
       },
       selectItem,
     );
-  }, [items, !!list.current]);
+  }, [items, list.current]);
 
   useEffect(() => {
     onReady && onReady(helpers.current);
   }, []);
 
+  const onCancel = useCallback(() => {
+    helpers.current.navigate(null);
+  }, [helpers]);
+
   if (navIndex === null) return null;
 
   return (
-    <Dropdown onCancel={() => helpers.current.navigate(null)}>
+    <Dropdown onCancel={onCancel}>
       <div
         className="wx-233fr7 wx-list"
         ref={list}

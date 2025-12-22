@@ -11,14 +11,11 @@ export default function Demo() {
       <div className="wx-1Zx2ti demo-box">
         <h3>Select with a top label</h3>
         <Field label="Details">
-          {({ id }) => (
-            <Select
-              value={v1}
-              onChange={(e) => setV1(e.value)}
-              id={id}
-              options={users}
-            />
-          )}
+          <Select
+            value={v1}
+            onChange={(e) => setV1(e.value)}
+            options={users}
+          />
         </Field>
 
         <h3>Select with a placeholder</h3>
@@ -30,22 +27,17 @@ export default function Demo() {
       <div className="wx-1Zx2ti demo-box">
         <h3>Select with a side label</h3>
         <Field label="Details" position="left">
-          {({ id }) => (
-            <Select
-              value={v2}
-              onChange={(e) => setV2(e.value)}
-              id={id}
-              options={users}
-            />
-          )}
+          <Select
+            value={v2}
+            onChange={(e) => setV2(e.value)}
+            options={users}
+          />
         </Field>
         <Field label="Disabled" position="left">
-          {({ id }) => <Select id={id} disabled options={users} />}
+          <Select disabled options={users} />
         </Field>
         <Field label="Error" position="left" error>
-          {({ id }) => (
-            <Select id={id} error options={users} title="Invalid option" />
-          )}
+          <Select error options={users} title="Invalid option" />
         </Field>
       </div>
     </>

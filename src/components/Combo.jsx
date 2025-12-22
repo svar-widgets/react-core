@@ -1,13 +1,12 @@
 import { useState, useRef, useMemo, useCallback } from 'react';
 import List from './helpers/SuggestDropdown.jsx';
 import { useWritableProp } from '@svar-ui/lib-react';
-import { uid } from '@svar-ui/lib-dom';
+import { useInputId } from './helpers/getInputId.js';
 import './Combo.css';
 
 export default function Combo({
   value: valueProp = '',
-  onValueChange,
-  id = uid(),
+  id,
   options = [],
   textOptions = null,
   textField = 'label',
@@ -19,6 +18,7 @@ export default function Combo({
   children: kids,
   onChange,
 }) {
+  const inputId = useInputId(id);
   const navigate = useRef(null);
   const keydown = useRef(null);
 
@@ -27,7 +27,7 @@ export default function Combo({
   const [textInput, setTextInput] = useState('');
 
   const inputElement = useRef(null);
-  const [hasFocus, setHasFocus] = useState(false);
+  const hasFocus = useRef(false);
 
   // calculate the derived values
   const text = useMemo(() => {
@@ -68,14 +68,13 @@ export default function Combo({
         if (selected && value !== selected.id) {
           const newValue = selected.id;
           setValue(newValue);
-          onValueChange && onValueChange(newValue);
           onChange && onChange({ value: newValue });
         }
       }
 
-      if (!hasFocus && effects) inputElement.current.focus();
+      if (!hasFocus.current && effects) inputElement.current.focus();
     },
-    [options, value, hasFocus, onValueChange, onChange],
+    [options, value, onChange],
   );
 
   const selectByEvent = useCallback(
@@ -91,10 +90,9 @@ export default function Combo({
 
       setValue('');
       setFilterActive(false);
-      onValueChange && onValueChange('');
       onChange && onChange({ value: '' });
     },
-    [onValueChange, onChange],
+    [onChange],
   );
 
   const selectByText = useCallback(
@@ -127,15 +125,15 @@ export default function Combo({
   }, [filteredOptions.length, navigate]);
 
   const handleFocus = useCallback(() => {
-    setHasFocus(true);
+    hasFocus.current = true;
   }, []);
 
   const handleBlur = useCallback(() => {
-    setHasFocus(false);
+    hasFocus.current = false;
     setTimeout(() => {
-      if (!hasFocus) selectByText(text);
+      if (!hasFocus.current) selectByText(text);
     }, 200);
-  }, [hasFocus, selectByText, text]);
+  }, [selectByText, text]);
 
   return (
     <div
@@ -146,7 +144,7 @@ export default function Combo({
     >
       <input
         className={'wx-1j11Jk wx-input ' + (error ? 'wx-error' : '')}
-        id={id}
+        id={inputId}
         ref={inputElement}
         value={text}
         disabled={disabled}
@@ -170,6 +168,3 @@ export default function Combo({
     </div>
   );
 }
-
-// Note: React components don't support bind syntax, so onValueChange is used instead
-// update parent component to handle value changes via onValueChange

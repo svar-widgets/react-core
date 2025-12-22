@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import Checkbox from './Checkbox.jsx';
 import './CheckboxGroup.css';
+import { fieldId } from "../context";
 
 export default function CheckboxGroup({
   options = [],
@@ -21,17 +22,19 @@ export default function CheckboxGroup({
   );
 
   return (
-    <div className={`wx-q8xwRD wx-checkboxgroup ${type && `wx-${type}`}`}>
-      {options.map((option) => (
-        <div key={option.id} className="wx-q8xwRD wx-item">
-          <Checkbox
-            label={option.label}
-            inputValue={option.id}
-            value={value.includes(option.id)}
-            onChange={handleChange}
-          />
-        </div>
-      ))}
-    </div>
+    <fieldId.Provider value={null}>
+      <div className={`wx-q8xwRD wx-checkboxgroup ${type && `wx-${type}`}`}>
+        {options.map((option) => (
+          <div key={option.id} className="wx-q8xwRD wx-item">
+            <Checkbox
+              label={option.label}
+              inputValue={option.id}
+              value={value.includes(option.id)}
+              onChange={handleChange}
+            />
+          </div>
+        ))}
+      </div>
+    </fieldId.Provider>
   );
 }

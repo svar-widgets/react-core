@@ -1,9 +1,10 @@
-import { uid } from '@svar-ui/lib-dom';
 import { useState } from 'react';
+import { useInputId } from './helpers/getInputId.js';
+import { useId } from 'react';
 import './RadioButton.css';
 
 export default function RadioButton({
-  id = uid(),
+  id,
   label = '',
   value: externalValue,
   name = '',
@@ -11,6 +12,8 @@ export default function RadioButton({
   disabled = false,
   onChange,
 }) {
+  const fallbackId = useId();
+  const inputId = useInputId(id) || fallbackId;
   // Internal state for uncontrolled behavior
   const [internalValue, setInternalValue] = useState(false);
 
@@ -36,14 +39,14 @@ export default function RadioButton({
       <input
         type="radio"
         className="wx-3lDF1s wx-input"
-        id={id}
+        id={inputId}
         disabled={disabled}
         name={name}
         value={inputValue}
         checked={currentValue}
         onChange={handlerChange}
       />
-      <label htmlFor={id} className="wx-3lDF1s wx-label">
+      <label htmlFor={inputId} className="wx-3lDF1s wx-label">
         <span className="wx-3lDF1s wx-circle"></span>
         {label && <span className="wx-3lDF1s wx-radio-text">{label}</span>}
       </label>

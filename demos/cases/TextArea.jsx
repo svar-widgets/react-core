@@ -18,62 +18,39 @@ export default function Demo() {
       <div className="wx-2Y6z85 demo-box">
         <h3>Area with a top label</h3>
         <Field label="Details">
-          {({ id }) => (
-            <TextArea
-              value={v1}
-              onChange={setV1}
-              id={id}
-              placeholder="Type here"
-            />
-          )}
+          <TextArea value={v1} onChange={setV1} placeholder="Type here" />
         </Field>
         <Field label="Disabled">
-          {({ id }) => (
-            <TextArea
-              value={v1}
-              onChange={setV1}
-              id={id}
-              disabled
-              placeholder="Type here"
-            />
-          )}
+          <TextArea
+            value={v1}
+            onChange={setV1}
+            disabled
+            placeholder="Type here"
+          />
         </Field>
         <Field label="Readonly">
-          {({ id }) => (
-            <TextArea
-              value={v1}
-              onChange={setV1}
-              id={id}
-              readonly
-              placeholder="Type here"
-            />
-          )}
+          <TextArea
+            value={v1}
+            onChange={setV1}
+            readonly
+            placeholder="Type here"
+          />
         </Field>
         <Field label="Error" error>
-          {({ id }) => (
-            <TextArea
-              value={v1}
-              onChange={setV1}
-              id={id}
-              error
-              placeholder="Type here"
-              title="It can't be empty"
-            />
-          )}
+          <TextArea
+            value={v1}
+            onChange={setV1}
+            error
+            placeholder="Type here"
+            title="It can't be empty"
+          />
         </Field>
       </div>
 
       <div className="wx-2Y6z85 demo-box">
         <h3>Area with a side label</h3>
         <Field label="Details" position="left">
-          {({ id }) => (
-            <TextArea
-              value={v2}
-              onChange={setV2}
-              id={id}
-              placeholder="Type here"
-            />
-          )}
+          <TextArea value={v2} onChange={setV2} placeholder="Type here" />
         </Field>
       </div>
     </>

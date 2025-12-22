@@ -17,29 +17,24 @@ export default function Radio() {
     <>
       <div className="wx-2X2L2Q demo-box">
         <h3>RadioButton</h3>
-        <Field>
-          <RadioButton label="Option 1" value={true} name="a1" />
-          <RadioButton label="Option 2" name="a1" />
-        </Field>
+        <RadioButton label="Option 1" name="a1" />
+        &nbsp;
+        <RadioButton label="Option 2" name="a1" />
       </div>
 
       <div className="wx-2X2L2Q demo-box">
         <h3>RadioButton with side label</h3>
         <Field label="Radio 1" position="left" type="checkbox">
-          {({ id }) => <RadioButton id={id} name="a2" />}
+          <RadioButton name="a2" />
         </Field>
         <Field label="Radio 2" position="left" type="checkbox">
-          {({ id }) => <RadioButton id={id} name="a2" />}
+          <RadioButton name="a2" />
         </Field>
         <Field label="Disabled" position="left" type="checkbox">
-          {({ id }) => (
-            <RadioButton label="Default" disabled id={id} name="a2" />
-          )}
+          <RadioButton label="Default" disabled name="a2" />
         </Field>
         <Field label="Checked" position="left" type="checkbox">
-          {({ id }) => (
-            <RadioButton label="Checked" value={true} id={id} name="a2" />
-          )}
+          <RadioButton label="Checked" value={true} name="a2" />
         </Field>
       </div>
 

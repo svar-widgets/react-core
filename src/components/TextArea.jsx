@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useWritableProp } from '@svar-ui/lib-react';
-import { uid } from '@svar-ui/lib-dom';
+import { useInputId } from './helpers/getInputId.js';
 
 import './TextArea.css';
 
 export default function TextArea({
   value: propValue = '',
-  id = uid(),
+  id,
   placeholder = '',
   title = '',
   disabled = false,
@@ -14,6 +14,7 @@ export default function TextArea({
   readonly = false,
   onChange,
 }) {
+  const inputId = useInputId(id);
   const [value, setValue] = useWritableProp(propValue);
 
   const handleInput = useCallback(
@@ -53,7 +54,7 @@ export default function TextArea({
   return (
     <textarea
       className={'wx-3yFVAC' + ` wx-textarea ${error ? 'wx-error' : ''}`}
-      id={id}
+      id={inputId}
       disabled={disabled}
       placeholder={placeholder}
       readOnly={readonly}
