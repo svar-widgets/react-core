@@ -14,17 +14,15 @@ const ComboDemo = () => {
   const renderedUsers = [
     {
       id: 103,
-      label: 'Ned Stark',
-      email: 'winterhell@gmail.com',
-      avatar:
-        'https://docs.webix.com/usermanager-backend/users/103/avatar/491902305.jpg',
+      label: "Ned Stark",
+      email: "winterhell@gmail.com",
+      avatar: "https://cdn.svar.dev/demos/assets/avatar/491902305.jpg",
     },
     {
       id: 104,
-      label: 'Lord Varys',
-      email: 'little.birds@gmail.com',
-      avatar:
-        'https://docs.webix.com/usermanager-backend/users/104/avatar/005471511.jpg',
+      label: "Lord Varys",
+      email: "little.birds@gmail.com",
+      avatar: "https://cdn.svar.dev/demos/assets/avatar/005471511.jpg",
     },
   ];
 

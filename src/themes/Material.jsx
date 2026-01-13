@@ -13,13 +13,13 @@ export default function render(props) {
           <>
             <link
               rel="preconnect"
-              href="https://cdn.webix.com"
+              href="https://cdn.svar.dev"
               crossOrigin="true"
             />
             <RobotoFont />
             <link
               rel="stylesheet"
-              href="https://webix.io/dev/fonts/wxi/wx-icons.css"
+              href="https://cdn.svar.dev/fonts/wxi/wx-icons.css"
             />
           </>
         )}
