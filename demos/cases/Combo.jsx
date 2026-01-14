@@ -12,18 +12,18 @@ const ComboDemo = () => {
   }
 
   const renderedUsers = [
-    {
-      id: 103,
-      label: "Ned Stark",
-      email: "winterhell@gmail.com",
-      avatar: "https://cdn.svar.dev/demos/assets/avatar/491902305.jpg",
-    },
-    {
-      id: 104,
-      label: "Lord Varys",
-      email: "little.birds@gmail.com",
-      avatar: "https://cdn.svar.dev/demos/assets/avatar/005471511.jpg",
-    },
+		{
+			id: 103,
+			label: "Ned Stark",
+			email: "winterhell@gmail.com",
+			avatar: "https://cdn.svar.dev/demos/assets/avatar/491902305.jpg",
+		},
+		{
+			id: 104,
+			label: "Lord Varys",
+			email: "little.birds@gmail.com",
+			avatar: "https://cdn.svar.dev/demos/assets/avatar/005471511.jpg",
+		},
   ];
 
   return (
