@@ -1,7 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { fieldId } from '../../context';
+import { uid } from '@svar-ui/lib-dom';
 
 export function useInputId(id) {
-  const v = useContext(fieldId);
-  return id || v;
+  const register = useContext(fieldId);
+
+  const [inputId] = useState(() => id || (register && register()) || uid());
+
+  return inputId;
 }

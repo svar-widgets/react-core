@@ -94,16 +94,16 @@ i.wx-2ZWgb4:before {
   box-shadow: var(--wx-button-box-shadow);
 }
 
-.wx-2ZWgb4.wx-primary.wx-pressed:not(:global([disabled])),
-.wx-2ZWgb4.wx-primary.wx-pressed:hover:not(:global([disabled])),
-.wx-2ZWgb4.wx-primary.wx-pressed:active:not(:global([disabled])) {
+.wx-2ZWgb4.wx-primary.wx-pressed:not([disabled]),
+.wx-2ZWgb4.wx-primary.wx-pressed:hover:not([disabled]),
+.wx-2ZWgb4.wx-primary.wx-pressed:active:not([disabled]) {
   background-color: var(--wx-button-primary-pressed);
   box-shadow: var(--wx-button-primary-box-shadow);
 }
 
-.wx-2ZWgb4.wx-danger.wx-pressed:not(:global([disabled])),
-.wx-2ZWgb4.wx-danger.wx-pressed:hover:not(:global([disabled])),
-.wx-2ZWgb4.wx-danger.wx-pressed:active:not(:global([disabled])) {
+.wx-2ZWgb4.wx-danger.wx-pressed:not([disabled]),
+.wx-2ZWgb4.wx-danger.wx-pressed:hover:not([disabled]),
+.wx-2ZWgb4.wx-danger.wx-pressed:active:not([disabled]) {
   background-color: var(--wx-button-danger-pressed);
   box-shadow: var(--wx-button-primary-box-shadow);
 }

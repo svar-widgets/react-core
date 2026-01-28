@@ -1,6 +1,5 @@
 import { useWritableProp } from '@svar-ui/lib-react';
 import { useInputId } from './helpers/getInputId.js';
-import { useId } from 'react';
 import './Checkbox.css';
 
 export default function Checkbox({
@@ -12,8 +11,7 @@ export default function Checkbox({
   disabled = false,
 }) {
 
-  const fallbackId = useId();
-  const inputId = useInputId(id) || fallbackId;
+  const inputId = useInputId(id);
   const [value, setValue] = useWritableProp(valueProp);
 
   const handlerChange = ({ target }) => {
