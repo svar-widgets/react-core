@@ -1,0 +1,17 @@
+.dropdown-box.wx-DrpDwn01 {
+  width: 250px;
+  height: 302px;
+  position: relative;
+  top: 200px;
+  left: 300px;
+}
+.label.wx-DrpDwn01 {
+  font-weight: 600;
+  padding: 10px 0;
+}
+.wx-button.my-button {
+  width: 250px;
+}
+.my-dropdown {
+  background: #f9f9f9 !important;
+}

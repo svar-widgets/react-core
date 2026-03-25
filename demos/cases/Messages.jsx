@@ -42,20 +42,22 @@ const Messages = () => {
     <>
       <div className="wx-Je510u demo-box">
         <h3>Notice</h3>
-        <Button type="primary" onClick={() => notice('')}>
-          Show Notice
-        </Button>
-        <Button onClick={() => notice('info')}>Show Info</Button>
-        <Button onClick={() => notice('warning')}>Show Warning</Button>
-        <Button onClick={() => notice('success')}>Show Success</Button>
-        <Button onClick={() => notice('danger')}>Show Danger</Button>
-        <Button
-          onClick={() =>
-            notice('info', 'very long text goes here to show word wrap')
-          }
-        >
-          Show Long message
-        </Button>
+        <div className="demo-row">
+          <Button type="primary" onClick={() => notice('')}>
+            Show Notice
+          </Button>
+          <Button onClick={() => notice('info')}>Show Info</Button>
+          <Button onClick={() => notice('warning')}>Show Warning</Button>
+          <Button onClick={() => notice('success')}>Show Success</Button>
+          <Button onClick={() => notice('danger')}>Show Danger</Button>
+          <Button
+            onClick={() =>
+              notice('info', 'very long text goes here to show word wrap')
+            }
+          >
+            Show Long message
+          </Button>
+        </div>
       </div>
 
       <div className="wx-Je510u demo-box">

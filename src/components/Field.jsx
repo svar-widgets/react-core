@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useMemo } from 'react';
 import { uid } from '@svar-ui/lib-dom';
 import { fieldId } from "../context";
 import './Field.css';
@@ -6,29 +6,26 @@ import './Field.css';
 export default function Field({
   label = '',
   position = '',
-  css = '',
   error = false,
   type = '',
   required = false,
+  id,
   children,
+  width = "",
 }) {
-  const firstInputId = useRef(null);
-  const registerInput = useCallback(() => {
-    if (firstInputId.current) return firstInputId.current;
-    const id = uid();
-    firstInputId.current = id;
-    return id;
-  }, []);
+  const inputId = useMemo(() => (id === undefined ? uid() : id), [id]);
+  const style = {...(width && { width })};
 
   return (
-    <fieldId.Provider value={registerInput}>
+    <fieldId.Provider value={inputId}>
       <div
-        className={`wx-2oVUvC wx-field wx-${position} ${css} ${error ? 'wx-error' : ''} ${required ? 'wx-required' : ''}`.trim()}
+        style={style}
+        className={`wx-2oVUvC wx-field wx-${position} ${error ? 'wx-error' : ''} ${required ? 'wx-required' : ''}`.trim()}
       >
         {label && (
-          <label className="wx-2oVUvC wx-label" htmlFor={firstInputId.current}>
-            {label}
-          </label>
+          inputId
+            ? <label className="wx-2oVUvC wx-label" htmlFor={inputId}>{label}</label>
+            : <div className="wx-2oVUvC wx-label">{label}</div>
         )}
         <div className={`wx-2oVUvC wx-field-control wx-${type}`}>
           {children}

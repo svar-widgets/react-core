@@ -7,6 +7,7 @@ import Dropdown from './Dropdown.jsx';
 import Calendar from './Calendar.jsx';
 import './DatePicker.css';
 import { defaultLocale } from './helpers/locale.js';
+import { toDateDropdown } from './helpers/dropdown.js';
 
 const defaultButtons = ['clear', 'today'];
 
@@ -15,8 +16,6 @@ export default function DatePicker({
   id,
   disabled = false,
   error = false,
-  width = 'unset',
-  align = 'start',
   placeholder = '',
   format = '',
   buttons = defaultButtons,
@@ -25,6 +24,7 @@ export default function DatePicker({
   editable = false,
   clear = false,
   onChange,
+  dropdown = {},
 }) {
   const { calendar: calendarLocale, formats } = (
     useContext(i18n) || defaultLocale()
@@ -47,7 +47,6 @@ export default function DatePicker({
 
   function doChange(v) {
     // skip "select" event if the same value
-    // or different objects with the same value
     // or different objects with the same value
     const skipEvent =
       v === value ||
@@ -116,9 +115,7 @@ export default function DatePicker({
       {popup && !disabled && (
         <Dropdown
           onCancel={oncancel}
-          width={width}
-          align={align}
-          autoFit={!!align}
+          {...toDateDropdown(dropdown)}
         >
           <Calendar
             buttons={buttons}

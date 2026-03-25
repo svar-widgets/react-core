@@ -1,4 +1,4 @@
-import { useContext, useMemo, useCallback } from 'react';
+import { useContext, useMemo, useCallback, useRef } from 'react';
 import Button from './Button.jsx';
 import { getPartValue } from './helpers';
 import { i18n } from '../../context.js';
@@ -13,8 +13,9 @@ export default function Year({
   onChange,
   onShift,
 }) {
-  const [value, setValue] = useWritableProp(valueProp || new Date());
-  const [current, setCurrent] = useWritableProp(currentProp || new Date());
+  const defaultDate = useRef(new Date());
+  const [value, setValue] = useWritableProp(valueProp || defaultDate.current);
+  const [current, setCurrent] = useWritableProp(currentProp || defaultDate.current);
 
   const locale = useContext(i18n).getRaw().calendar;
   const months = locale.monthShort || [];

@@ -1,6 +1,19 @@
 .wx-list.wx-233fr7 {
   max-height: 250px;
   overflow-y: auto;
+  position: relative;
+}
+
+.wx-list-wrapper.wx-233fr7 {
+  position: relative;
+  width: 100%;
+}
+
+.wx-list-content.wx-233fr7 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .wx-item.wx-233fr7 {

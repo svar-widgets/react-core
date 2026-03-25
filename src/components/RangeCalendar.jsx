@@ -122,11 +122,11 @@ const RangeCalendar = ({
         <Panel
           value={{ start, end }}
           current={leftCurrent}
-          setCurrent={onLeft}
           markers={markers}
           buttons={buttons}
           part="both"
           onChange={doChangeStart}
+          onCurrentChange={onLeft}
         />
       </Locale>
     );
@@ -138,24 +138,22 @@ const RangeCalendar = ({
             <Panel
               value={{ start, end }}
               current={leftCurrent}
-              setCurrent={onLeft}
               markers={markers}
               buttons={false}
               part="left"
               onChange={doChangeStart}
-              onCurrentChange={(v) => onLeft(v)}
+              onCurrentChange={onLeft}
             />
           </div>
           <div className="wx-p2jCaW wx-half">
             <Panel
               value={{ start, end }}
               current={rightCurrent}
-              setCurrent={onRight}
               markers={markers}
               buttons={buttons}
               part="right"
               onChange={doChangeEnd}
-              onCurrentChange={(v) => onRight(v)}
+              onCurrentChange={onRight}
             />
           </div>
         </div>

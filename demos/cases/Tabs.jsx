@@ -4,7 +4,6 @@ import { Tabs, context } from '../../src/index.js';
 const tabs = [
   { id: 0, label: 'Info', icon: 'wxi-alert' },
   { id: 1, label: 'About' },
-  { id: 2, label: 'Contact' },
   { id: 3, label: '', icon: 'wxi-check' },
 ];
 
@@ -36,8 +35,6 @@ export default function DemoComponent() {
           <div className="wx-1EdWwt body">Info</div>
         ) : active === 1 ? (
           <div className="wx-1EdWwt body">About</div>
-        ) : active === 2 ? (
-          <div className="wx-1EdWwt body">Contact</div>
         ) : (
           <div className="wx-1EdWwt body">Check</div>
         )}

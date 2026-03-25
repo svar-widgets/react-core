@@ -11,18 +11,18 @@ const markLine2 = (v) =>
 export default function CalendarDemo() {
   return (
     <>
-      <div className="wx-2V1EF9 demo-box" style={{ width: '900px' }}>
+      <div className="wx-2V1EF9 demo-box">
         <h3>Calendar</h3>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div className="wx-2V1EF9 calendars">
           <Calendar value={new Date(2022, 2, 18)} />
           <Calendar current={new Date(2022, 2, 18)} markers={markLine} />
           <Calendar current={new Date(2022, 2, 18)} markers={markLine2} />
         </div>
       </div>
 
-      <div className="wx-2V1EF9 demo-box" style={{ width: '900px' }}>
+      <div className="wx-2V1EF9 demo-box">
         <h3>Calendar with Locale and Format</h3>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div className="wx-2V1EF9 calendars">
           <Locale words={de}>
             <Calendar value={new Date(2022, 2, 18)} />
           </Locale>
@@ -44,17 +44,18 @@ export default function CalendarDemo() {
         </div>
       </div>
 
-      <div className="wx-2V1EF9 demo-box" style={{ width: '300px' }}>
-        <h3>Calendar without buttons</h3>
-        <Calendar value={new Date(2022, 2, 18)} buttons={false} />
-      </div>
-
-      <div
-        className="wx-2V1EF9 demo-box"
-        style={{ width: '300px', marginTop: '20px' }}
-      >
-        <h3>Calendar with Today button only</h3>
-        <Calendar value={new Date(2022, 2, 18)} buttons={['today']} />
+      <div className="wx-2V1EF9 calendars">
+        <div className="wx-2V1EF9 demo-box">
+          <h3>Calendar without buttons</h3>
+          <Calendar value={new Date(2022, 2, 18)} buttons={false} />
+        </div>
+        <div
+          className="wx-2V1EF9 demo-box"
+          style={{ marginTop: '20px' }}
+        >
+          <h3>Calendar with Today button only</h3>
+          <Calendar value={new Date(2022, 2, 18)} buttons={['today']} />
+        </div>
       </div>
     </>
   );

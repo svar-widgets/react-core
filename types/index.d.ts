@@ -73,6 +73,7 @@ export declare const ColorPicker: FC<{
   disabled?: boolean;
   error?: boolean;
   clear?: boolean;
+  dropdown?: DropdownOptions;
   onChange?: (ev: { value: string }) => void;
 }>;
 
@@ -87,6 +88,9 @@ export declare const Combo: FC<{
   disabled?: boolean;
   error?: boolean;
   clear?: boolean;
+  dropdown?: DropdownOptions & {
+    virtualized?: boolean;
+  };
   children?: ReactNode;
   onChange?: (ev: { value: string | number }) => void;
 }>;
@@ -105,6 +109,7 @@ export declare const DatePicker: FC<{
   title?: string;
   editable?: boolean | ((value: string) => Date | null);
   clear?: boolean;
+  dropdown?: DropdownOptions;
   onChange?: (ev: { value: Date | null }) => void;
 }>;
 
@@ -123,6 +128,7 @@ export declare const DateRangePicker: FC<{
   buttons?: boolean | ('clear' | 'today' | 'done')[];
   editable?: boolean | ((value: string) => Date | null);
   clear?: boolean;
+  dropdown?: DropdownOptions;
   onChange?: (ev: { value: { start: Date; end: Date | null } | null }) => void;
 }>;
 
@@ -144,6 +150,9 @@ export declare const MultiCombo: FC<{
   disabled?: boolean;
   error?: boolean;
   checkboxes?: boolean;
+  dropdown?: DropdownOptions & {
+    virtualized?: boolean;
+  };
   children?: ReactNode;
   onChange?: (ev: { value: (string | number)[] }) => void;
 }>;
@@ -158,14 +167,12 @@ export declare const Popup: FC<{
   onCancel?: (ev: MouseEvent) => void;
 }>;
 
-export declare const Dropdown: FC<{
-  position?: string;
-  align?: 'start' | 'center' | 'end';
-  autoFit?: boolean;
-  width?: string;
-  children?: ReactNode;
-  onCancel?: (ev: MouseEvent) => void;
-}>;
+export declare const Dropdown: FC<
+  DropdownOptions & {
+    children?: ReactNode;
+    onCancel?: (ev: MouseEvent) => void;
+  }
+>;
 
 export declare const Pager: FC<{
   total?: number;
@@ -201,6 +208,9 @@ export declare const RichSelect: FC<{
   title?: string;
   textField?: string;
   clear?: boolean;
+  dropdown?: DropdownOptions & {
+    virtualized?: boolean;
+  };
   children?: ReactNode;
   onChange?: (ev: { value: string | number }) => void;
 }>;
@@ -416,16 +426,45 @@ export declare const Globals: FC<{
   children?: ReactNode;
 }>;
 
-export declare const SuggestDropdown: FC<{
-  items?: { id: string | number; label: string }[];
-  children?: ReactNode;
-  onSelect?: (ev: { id: string | number }) => void;
-  onReady?: (ev: {
-    navigate?: (dir: number | null, ev?: KeyboardEvent) => void;
-    keydown?: (ev: KeyboardEvent, dir: number) => void;
-    move?: (ev: KeyboardEvent) => void;
-  }) => void;
+export declare const Avatar: FC<{
+  value?: IUser | IUser[];
+  size?: number;
+  limit?: number;
 }>;
+
+export interface DropdownOptions {
+  inline?: boolean;
+  position?: 'top' | 'right' | 'bottom' | 'left';
+  align?: 'start' | 'center' | 'end';
+  css?: string;
+  width?: string | 'unset' | 'auto';
+  trackScroll?: boolean;
+  virtualized?: boolean;
+}
+
+export interface IUser {
+  id: string | number;
+  name?: string;
+  avatar?: string;
+  color?: string;
+}
+
+export declare const SuggestDropdown: FC<
+  DropdownOptions & {
+    items?: { id: string | number; label: string }[];
+    children?: ReactNode;
+    onSelect?: (ev: { id: string | number | (string | number)[] }) => void;
+    onReady?: (ev: {
+      navigate?: (dir: number | null, ev?: KeyboardEvent) => void;
+      keydown?: (ev: KeyboardEvent, dir: number) => void;
+      move?: (ev: KeyboardEvent) => void;
+    }) => void;
+    multiselect?: boolean;
+    checkboxes?: boolean;
+    value?: string | number | (string | number)[];
+    virtualized?: boolean;
+  }
+>;
 
 export type { ILocale, Terms } from '@svar-ui/lib-dom';
 

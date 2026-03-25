@@ -1,5 +1,5 @@
 import { Field, MultiCombo } from '../../src/index';
-import { users } from '../data/userlist';
+import { users, usersLarge } from '../data/userlist';
 
 import UserOption from '../custom/UserOption.jsx';
 
@@ -23,22 +23,26 @@ export default function Component() {
     <>
       <div className="wx-R7lgfw demo-box">
         <h3>MultiCombo with a simple list</h3>
-        <MultiCombo options={users} value={[104]} />
+        <Field width="500px">
+          <MultiCombo options={users} value={[104]} />
+        </Field>
       </div>
       <div className="wx-R7lgfw demo-box">
         <h3>MultiCombo with checkboxes</h3>
-        <MultiCombo checkboxes={true} options={users} value={[104]} />
+        <Field width="500px">
+          <MultiCombo checkboxes={true} options={users} value={[104]} />
+        </Field>
       </div>
 
       <div className="wx-R7lgfw demo-box">
         <h3>MultiCombo with a side label</h3>
-        <Field label="Owner" position="left">
+        <Field label="Owner" position="left" width="500px">
           <MultiCombo options={users} value={[104]} />
         </Field>
-        <Field label="Disabled" position="left">
+        <Field label="Disabled" position="left" width="500px">
           <MultiCombo options={users} disabled value={[104]} />
         </Field>
-        <Field label="Error" error position="left">
+        <Field label="Error" error position="left" width="500px">
           <MultiCombo
             title="Invalid option"
             options={users}
@@ -50,29 +54,52 @@ export default function Component() {
 
       <div className="wx-R7lgfw demo-box">
         <h3>MultiCombo with a template</h3>
-        <MultiCombo options={users} value={[104]}>
-          {({ option }) => <UserOption data={option} />}
-        </MultiCombo>
+        <Field width="500px">
+          <MultiCombo options={users} value={[104]}>
+            {({ option }) => <UserOption data={option} />}
+          </MultiCombo>
+        </Field>
       </div>
 
       <div className="wx-R7lgfw demo-box">
         <h3>MultiCombo with a custom "textField"</h3>
-        <MultiCombo options={users} value={[104]} textField="email" />
+        <Field width="500px">
+          <MultiCombo options={users} value={[104]} textField="email" />
+        </Field>
       </div>
 
       <div className="wx-R7lgfw demo-box">
         <h3>MultiCombo without a value</h3>
-        <MultiCombo options={users} />
+        <Field width="500px">
+          <MultiCombo options={users} />
+        </Field>
       </div>
 
       <div className="wx-R7lgfw demo-box">
         <h3>MultiCombo without options</h3>
-        <MultiCombo />
+        <Field width="500px">
+          <MultiCombo />
+        </Field>
       </div>
 
       <div className="wx-R7lgfw demo-box">
         <h3>MultiCombo with hidden options</h3>
-        <MultiCombo textOptions={users} options={renderedUsers} value={[87]} />
+        <Field width="500px">
+          <MultiCombo textOptions={users} options={renderedUsers} value={[87]} />
+        </Field>
+      </div>
+
+      <div className="wx-R7lgfw demo-box">
+        <h3>Perfomance on a large list</h3>
+        <Field width="500px">
+          <MultiCombo
+            options={usersLarge}
+            value={[9000]}
+            dropdown={{ virtualized: true }}
+          >
+            {({ option }) => <UserOption data={option} />}
+          </MultiCombo>
+        </Field>
       </div>
     </>
   );

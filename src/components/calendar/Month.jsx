@@ -49,7 +49,7 @@ export default function Month({
     lastTime.current = e.timeStamp;
 
     e.stopPropagation();
-    if (onChange) onChange(new Date(new Date(date)));
+    if (onChange) onChange(new Date(date));
     if (onCancel) onCancel();
   }
 

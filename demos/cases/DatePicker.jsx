@@ -18,7 +18,7 @@ export default function DatePickerDemo() {
     <div className="wx-2o76S9 demo-box">
       <h3>Datepicker</h3>
       <Field label="Wide">
-        <DatePicker width="100%" onChange={showChanges} />
+        <DatePicker dropdown={{ width: "100%" }} onChange={showChanges} />
       </Field>
       <Field label="Align auto">
         <DatePicker />

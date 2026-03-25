@@ -14,6 +14,7 @@ export default function Slider({
   title = '',
   disabled = false,
   onChange,
+  width = "",
 }) {
   const inputId = useInputId(id);
   const [value, setValue] = useWritableProp(initialValue);
@@ -66,8 +67,10 @@ export default function Slider({
     }
   }, [inputRef, onslider]);
 
+  const style = {...(width && { width })};
+
   return (
-    <div className={`wx-2EDJ8G wx-slider ${css}`} title={title}>
+    <div className={`wx-2EDJ8G wx-slider ${css}`} style={style} title={title}>
       {label && (
         <label className="wx-2EDJ8G wx-label" htmlFor={inputId}>
           {label}

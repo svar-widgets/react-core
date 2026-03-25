@@ -4,12 +4,15 @@ export function getListHandlers() {
   let navIndex = null;
   let isVisible = false;
 
+  let virtualized = false;
+
   let list, options, navCallback, selectCallback;
-  const init = (l, o, n, c) => {
+  const init = (l, o, n, c, v) => {
     list = l;
     options = o;
     navCallback = n;
     selectCallback = c;
+    virtualized = v;
   };
 
   const setNav = (index) => {
@@ -19,7 +22,7 @@ export function getListHandlers() {
   };
 
   const scrollTo = (navIndex, ev) => {
-    if (navIndex !== null && list) {
+    if (!virtualized && navIndex !== null && list) {
       const next = list.querySelectorAll(`.wx-list > .wx-item`)[navIndex];
       if (next) {
         next.scrollIntoView({ block: 'nearest' });
@@ -42,9 +45,7 @@ export function getListHandlers() {
 
   const move = (ev) => {
     const id = locateID(ev);
-    // if we have id:"1", the locateID will return 1 as number
-    // so using non-strict comparison
-    const index = options.findIndex((a) => a.id == id);
+    const index = options.findIndex((a) => a.id === id);
 
     if (index !== navIndex) {
       setNav(index);

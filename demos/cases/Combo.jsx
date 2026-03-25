@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Field, Combo, Button } from '../../src/index';
-import { users } from '../data/userlist';
+import { users, usersLarge } from '../data/userlist';
 import UserOption from '../custom/UserOption';
 
 const ComboDemo = () => {
@@ -109,6 +109,28 @@ const ComboDemo = () => {
             options={renderedUsers}
             value={87}
             clearButton
+          />
+        </Field>
+      </div>
+
+      <div className="wx-2RGIOJ demo-box">
+        <h3>Perfomance on a large list</h3>
+        <Field>
+          <Combo
+            options={usersLarge}
+            value={9000}
+            dropdown={{ virtualized: true }}
+          >
+            {({ option }) => <UserOption data={option} />}
+          </Combo>
+        </Field>
+        <h3>Combo with ids: '0', '000', '0E1'</h3>
+        <Field>
+          <Combo
+            options={['0', '000', '0E1'].map(id => ({
+              id,
+              label: `"${id}" option`,
+            }))}
           />
         </Field>
       </div>

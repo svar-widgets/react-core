@@ -23,6 +23,7 @@ export default function ColorSelect({
   title = '',
   disabled = false,
   error = false,
+  dropdown = {},
 }) {
   const inputId = useInputId(id);
   const [currentValue, setCurrentValue] = useState(value);
@@ -82,7 +83,7 @@ export default function ColorSelect({
       )}
 
       {popup && (
-        <Dropdown onCancel={() => setPopup(false)}>
+        <Dropdown onCancel={() => setPopup(false)} {...dropdown}>
           <div className="wx-121TgJ wx-colors">
             <div
               className="wx-121TgJ wx-empty"

@@ -42,15 +42,7 @@ export default function Component() {
       </div>
 
       <div className="wx-1y9ERZ demo-box">
-        <h3>Field with multiple inputs</h3>
-        <Field label="Text" position="left">
-          <Text placeholder="This gets associated label" /><br />
-          <Text placeholder="This one does not" />
-        </Field>
-      </div>
-
-      <div className="wx-1y9ERZ demo-box">
-        <h3>Nested Fields controls</h3>
+        <h3>Nested Field controls</h3>
         <Field label="Each control is associated with its closest Field label">
         <Field label="First Name" position="left">
           <Text />

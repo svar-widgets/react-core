@@ -1,5 +1,6 @@
 .wx-pager.wx-35Np0p {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--wx-padding);
   align-items: center;
   padding: var(--wx-padding);

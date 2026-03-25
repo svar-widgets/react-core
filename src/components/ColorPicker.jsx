@@ -15,6 +15,7 @@ export default function ColorPicker({
   error = false,
   clear = false,
   onChange,
+  dropdown = {},
 }) {
   const inputId = useInputId(id);
   let [value, setValue] = useWritableProp(propertyValue);
@@ -62,7 +63,7 @@ export default function ColorPicker({
       )}
 
       {popup && (
-        <Dropdown onCancel={() => setPopup(false)}>
+        <Dropdown onCancel={() => setPopup(false)} {...dropdown}>
           <ColorBoard value={value} button="true" onChange={selectColor} />
         </Dropdown>
       )}

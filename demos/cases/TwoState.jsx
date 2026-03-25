@@ -54,18 +54,20 @@ export default function Component() {
 
       <div className="wx-1OqX0e demo-box">
         <h3>Icon TwoState Buttons</h3>
-        <TwoState icon="wxi-alert">With Icon</TwoState>
-        <TwoState type="primary" icon="wxi-alert" iconActive="wxi-check">
-          With Icon
-        </TwoState>
-        <TwoState type="secondary" icon="wxi-alert">
-          With Icon
-        </TwoState>
-        <TwoState icon="wxi-alert" />
-        <TwoState type="primary" icon="wxi-alert" />
-        <TwoState type="secondary" icon="wxi-alert" />
-        <TwoState type="danger" icon="wxi-alert" />
-        <TwoState disabled icon="wxi-alert" />
+        <div className="demo-row">
+          <TwoState icon="wxi-alert">With Icon</TwoState>
+          <TwoState type="primary" icon="wxi-alert" iconActive="wxi-check">
+            With Icon
+          </TwoState>
+          <TwoState type="secondary" icon="wxi-alert">
+            With Icon
+          </TwoState>
+          <TwoState icon="wxi-alert" />
+          <TwoState type="primary" icon="wxi-alert" />
+          <TwoState type="secondary" icon="wxi-alert" />
+          <TwoState type="danger" icon="wxi-alert" />
+          <TwoState disabled icon="wxi-alert" />
+        </div>
       </div>
 
       <div className="wx-1OqX0e demo-box">

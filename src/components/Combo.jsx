@@ -17,6 +17,7 @@ export default function Combo({
   clear = false,
   children: kids,
   onChange,
+  dropdown = {},
 }) {
   const inputId = useInputId(id);
   const navigate = useRef(null);
@@ -121,7 +122,6 @@ export default function Combo({
     setFilterActive(true);
 
     if (filteredOptions.length) navigate.current(0);
-    else navigate.current(null);
   }, [filteredOptions.length, navigate]);
 
   const handleFocus = useCallback(() => {
@@ -161,7 +161,7 @@ export default function Combo({
       )}
 
       {!disabled && (
-        <List items={filteredOptions} onReady={ready} onSelect={selectByEvent}>
+        <List items={filteredOptions} onReady={ready} onSelect={selectByEvent} {...dropdown}>
           {({ option }) => <>{kids ? kids({ option }) : option[textField]}</>}
         </List>
       )}

@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Button, Popup } from '../../src/index';
+import { Button, Popup, Slider } from '../../src/index';
 import { env } from '@svar-ui/lib-dom';
 import './Popup.css';
 
@@ -30,42 +30,34 @@ export default function DemoPopup() {
   }
 
   return (
-    <div className="wx-3w6KNK demo-box">
-      <h3>Popup</h3>
-      <div className="wx-3w6KNK toolbar">
-        <div>
-          <Button type="block" onClick={showAt}>
-            Show at position
-          </Button>
-        </div>
-        <div ref={node}>
-          <Button type="block" onClick={showNext}>
-            Show next to button
-          </Button>
-        </div>
-        <div>
-          <Button type="block" onClick={showCenter}>
-            Show at center
-          </Button>
+    <>
+      <div className="wx-3w6KNK demo-box">
+        <h3>Popup (local)</h3>
+        <div className="demo-row">
+          <Button onClick={showAt}>Show at position</Button>
+          <div ref={node}>
+            <Button onClick={showNext}>Show next to button</Button>
+          </div>
+          <Button onClick={showCenter}>Show at center</Button>
         </div>
       </div>
-      <div>
-        {isOpen && (
-          <Popup
-            onCancel={onCancel}
-            at={mode}
-            parent={parent}
-            left={100}
-            top={100}
-          >
-            <div className="wx-3w6KNK popup">
-              <p>Some text here and there</p>
-              <p>Some text here and there</p>
-              <p>Some text here and there</p>
-            </div>
-          </Popup>
-        )}
-      </div>
-    </div>
+
+      {isOpen && (
+        <Popup
+          onCancel={onCancel}
+          at={mode}
+          parent={parent}
+          left={100}
+          top={100}
+        >
+          <div className="wx-3w6KNK popup">
+            <p>Some text here and there</p>
+            <p>Some text here and there</p>
+            <p>Some text here and there</p>
+            <Slider />
+          </div>
+        </Popup>
+      )}
+    </>
   );
 }

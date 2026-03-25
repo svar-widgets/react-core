@@ -1,0 +1,42 @@
+.wx-avatar.wx-aadkRiRf {
+  position: relative;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+}
+
+.wx-avatar.wx-aadkRiRf img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wx-avatar.wx-aadkRiRf span {
+  text-transform: uppercase;
+}
+
+.wx-avatar-overflow.wx-aadkRiRf .wx-avatar-overflow-badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-transform: none;
+}
+
+.wx-avatar-stack.wx-aadkRiRf {
+  display: inline-flex;
+  align-items: center;
+}
+
+.wx-avatar-root.wx-aadkRiRf {
+  display: block;
+  min-width: 0;
+}

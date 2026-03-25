@@ -7,6 +7,7 @@ import Text from './Text.jsx';
 import Dropdown from './Dropdown.jsx';
 import RangeCalendar from './RangeCalendar.jsx';
 import { defaultLocale } from './helpers/locale.js';
+import { toDateDropdown } from './helpers/dropdown.js';
 
 const defaultButtons = ['clear', 'today'];
 
@@ -16,8 +17,6 @@ const DateRangePicker = ({
   id,
   disabled = false,
   error = false,
-  width = 'unset',
-  align = 'start',
   placeholder = '',
   css = '',
   title = '',
@@ -26,6 +25,7 @@ const DateRangePicker = ({
   buttons = defaultButtons,
   editable = false,
   clear = false,
+  dropdown,
 }) => {
   const [value, setValue] = useWritableProp(valueProp);
   const { calendar: calendarLocale, formats } = (
@@ -149,9 +149,7 @@ const DateRangePicker = ({
       {popup && !disabled && (
         <Dropdown
           onCancel={onCancel}
-          width={width}
-          align={align}
-          autoFit={!!align}
+          {...toDateDropdown(dropdown)}
         >
           <RangeCalendar
             onCancel={onCancel}

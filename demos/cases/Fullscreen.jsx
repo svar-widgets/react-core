@@ -72,6 +72,12 @@ export default function Component() {
           max-width: 900px;
           gap: 8px;
         }
+        @media (max-width: 767px) {
+          .demo-content {
+            flex-direction: column;
+            max-width: 300px;
+          }
+        }
       `}</style>
     </div>
   );

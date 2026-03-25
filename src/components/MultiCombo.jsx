@@ -2,7 +2,6 @@ import { useState, useMemo, useRef, useCallback } from 'react';
 import { useWritableProp, snippet } from '@svar-ui/lib-react';
 import { useInputId } from './helpers/getInputId.js';
 import List from './helpers/SuggestDropdown.jsx';
-import Checkbox from './Checkbox.jsx';
 import './MultiCombo.css';
 
 const defaultValue = [];
@@ -20,6 +19,7 @@ export default function MultiCombo({
   checkboxes = false,
   onChange,
   children,
+  dropdown = {},
 }) {
   const inputId = useInputId(id);
   const navigate = useRef(null);
@@ -57,26 +57,13 @@ export default function MultiCombo({
   const onselect = useCallback(
     (ev) => {
       const { id } = ev;
-
       if (id) {
-        let next;
-        if (value) {
-          if (value.includes(id)) {
-            next = value.filter((i) => i !== id);
-          } else {
-            next = [...value, id];
-          }
-        } else {
-          next = [id];
-        }
-
-        setValue(next);
-        onChange && onChange({ value: next });
-
+        setValue(id);
+        onChange && onChange({ value: id });
         inputElement.current.focus();
       }
     },
-    [value, onChange],
+    [onChange],
   );
 
   const remove = useCallback(
@@ -148,16 +135,17 @@ export default function MultiCombo({
       </div>
 
       {!disabled && (
-        <List items={filterOptions} onReady={onready} onSelect={onselect}>
+        <List
+          items={filterOptions}
+          multiselect={true}
+          onReady={onready}
+          onSelect={onselect}
+          checkboxes={checkboxes}
+          value={value}
+          {...dropdown}
+        >
           {({ option }) => (
             <>
-              {checkboxes && (
-                <Checkbox
-                  style={{ marginRight: '8px', pointerEvents: 'none' }}
-                  name={option.id}
-                  value={value && value.includes(option.id)}
-                />
-              )}
               {children ? snippet(children, { option }) : option[textField]}
             </>
           )}

@@ -1,3 +1,4 @@
+import Avatar from './cases/Avatar.jsx';
 import Basic from './cases/Basic.jsx';
 import TextArea from './cases/TextArea.jsx';
 import Buttons from './cases/Buttons.jsx';
@@ -10,6 +11,8 @@ import ColorPicker from './cases/ColorPicker.jsx';
 import Combo from './cases/Combo.jsx';
 import DatePicker from './cases/DatePicker.jsx';
 import DateRangePicker from './cases/DateRangePicker.jsx';
+import Dropdown from './cases/Dropdown.jsx';
+import DropdownScroll from './cases/DropdownScroll.jsx';
 import Locales from './cases/Locales.jsx';
 import Messages from './cases/Messages.jsx';
 import TwoState from './cases/TwoState.jsx';
@@ -33,6 +36,7 @@ import Fullscreen from './cases/Fullscreen.jsx';
 import ModalArea from './cases/ModalArea.jsx';
 
 export const links = [
+  ['/avatar/:skin', 'Avatar', Avatar, 'Avatar'],
   ['/base/:skin', 'Basic UI', Basic, 'Basic'],
   ['/button/:skin', 'Button', Buttons, 'Buttons'],
   ['/calendar/:skin', 'Calendar', Calendar, 'Calendar'],
@@ -47,6 +51,13 @@ export const links = [
     'DateRangePicker',
     DateRangePicker,
     'DateRangePicker',
+  ],
+  ['/dropdown/:skin', 'Dropdown', Dropdown, 'Dropdown'],
+  [
+    '/dropdownscroll/:skin',
+    'Dropdown Scroll',
+    DropdownScroll,
+    'DropdownScroll',
   ],
   ['/field/:skin', 'Field', Field, 'Field'],
   ['/fullscreen/:skin', 'Fullscreen', Fullscreen, 'Fullscreen'],

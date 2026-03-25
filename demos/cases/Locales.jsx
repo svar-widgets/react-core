@@ -43,11 +43,15 @@ export default function Locales() {
   return (
     <>
       <div className={`${cssScope} demo-box`}>
-        <Segmented
-          options={options}
-          value={lang}
-          onChange={(v) => setLang(v.value)}
-        />
+        <div className="demo-hscroll">
+          <div>
+            <Segmented
+              options={options}
+              value={lang}
+              onChange={(v) => setLang(v.value)}
+            />
+          </div>
+        </div>
       </div>
 
       <div className={`${cssScope} demo-box`} style={{ width: '300px' }}>

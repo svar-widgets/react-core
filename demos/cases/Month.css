@@ -1,12 +1,13 @@
-.custom_size.wx-1Y7Cn3 {
+.custom.wx-1Y7Cn3 {
   --wx-calendar-cell-size: 64px;
+  --wx-color-font-disabled: transparent;
 }
-.custom_size .days .day {
+.custom .days .day {
   padding: 3px;
   align-items: start;
   justify-content: left;
 }
-.custom_size .weekdays .weekday {
+.custom .weekdays .weekday {
   padding: 3px;
   text-align: left;
 }
@@ -14,9 +15,11 @@
 .row.wx-1Y7Cn3 {
   display: flex;
   flex-direction: row;
-  --wx-color-font-disabled: transparent;
+  justify-content: flex-start;
+  gap: 4px;
+  flex-wrap: wrap;
 }
 .cell.wx-1Y7Cn3 {
   margin: 20px;
-  min-width: 220px;
+  width: 220px;
 }

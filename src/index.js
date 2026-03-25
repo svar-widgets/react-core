@@ -35,6 +35,7 @@ export { default as Modal } from './components/Modal.jsx';
 export { default as ModalArea } from './components/ModalArea.jsx';
 export { default as SideArea } from './components/SideArea.jsx';
 export { default as Portal } from './components/Portal.jsx';
+export { default as Avatar } from './components/Avatar.jsx';
 
 export { default as Material } from './themes/Material.jsx';
 export { default as Willow } from './themes/Willow.jsx';

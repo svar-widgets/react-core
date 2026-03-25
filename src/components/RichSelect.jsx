@@ -15,6 +15,7 @@ export default function RichSelect({
   clear = false,
   children: kids,
   onChange,
+  dropdown = {},
 }) {
   const navigate = useRef(null);
   const keydown = useRef(null);
@@ -84,7 +85,7 @@ export default function RichSelect({
       )}
 
       {!disabled && (
-        <List items={options} onReady={ready} onSelect={select}>
+        <List items={options} onReady={ready} onSelect={select} {...dropdown}>
           {({ option }) => (kids ? kids(option) : option[textField])}
         </List>
       )}

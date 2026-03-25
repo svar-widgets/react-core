@@ -19,7 +19,7 @@ const BLOCK = 'Block';
 const LINE = 'Line';
 
 function ColorBoard({
-  value: propertyValue = '#65D3B3',
+  value: valueProp = '#65D3B3',
   button = false,
   onChange,
 }) {
@@ -33,7 +33,11 @@ function ColorBoard({
   const [hueColor, setHueColor] = useState();
   const [lineLeft, setLineLeft] = useState();
 
-  const [value, setValue] = useWritableProp(propertyValue);
+  const [value, setValue] = useWritableProp(valueProp);
+  const [inputValue, setInputValue] = useState(valueProp); 
+
+  const moveBlockSliderRef = useRef(null);
+  const moveLineSliderRef = useRef(null);
 
   const color = useMemo(() => parseColor(value) || '#65D3B3', [value]);
   const blockColor = useMemo(
@@ -57,7 +61,6 @@ function ColorBoard({
       // Call setCurrentColor
       let _sValue, _vValue;
 
-      const [, ,] = colorTransformator.hexToHvs(color);
       const pxX = width / 100;
       const pxY = height / 100;
 
@@ -65,11 +68,12 @@ function ColorBoard({
       _vValue = Math.ceil(Math.abs(dy / pxY - 100)) / 100;
 
       const newValue = colorTransformator.hvsToHex(
-        hueColor || 0,
+        hueColor,
         _sValue,
         _vValue,
       );
       setValue(newValue);
+      setInputValue(newValue);
       onChange && onChange({ value: newValue, input: true });
     },
     [color, hueColor, onChange],
@@ -92,13 +96,17 @@ function ColorBoard({
       [, _sValue, _vValue] = colorTransformator.hexToHvs(color);
       const newValue = colorTransformator.hvsToHex(newHue, _sValue, _vValue);
       setValue(newValue);
+      setInputValue(newValue);
       onChange && onChange({ value: newValue, input: true });
     },
     [color, onChange],
   );
 
-  const setSlidersPosition = useCallback(() => {
-    const [h, s, v] = colorTransformator.hexToHvs(color);
+  moveBlockSliderRef.current = moveBlockSlider;
+  moveLineSliderRef.current = moveLineSlider;
+
+  const setSlidersPosition = useCallback((newColor) => {
+    const [h, s, v] = colorTransformator.hexToHvs(newColor || color);
     setHueColor(h);
 
     if (blockRef.current) {
@@ -117,10 +125,11 @@ function ColorBoard({
   const handleChange = useCallback(
     ({ target }) => {
       const newColor = parseColor(target.value);
-      setValue(newColor);
-      onChange && onChange({ value: newColor, input: true });
+      setInputValue(target.value);
       if (newColor) {
-        setSlidersPosition();
+        setValue(newColor);
+        onChange && onChange({ value: newColor, input: true });
+        setSlidersPosition(newColor);
       }
     },
     [onChange, setSlidersPosition],
@@ -181,39 +190,32 @@ function ColorBoard({
     },
     [moveBlockSlider, moveLineSlider],
   );
-
+  
   useEffect(() => {
-    setSlidersPosition();
-  }, [setSlidersPosition]);
-
-  useEffect(() => {
-    if (value !== value) {
-      setValue(value);
-      setSlidersPosition();
-    }
-  }, [value, value, setSlidersPosition]);
-
-  useEffect(() => {
+    const destroy = [];
     if (blockRef.current) {
-      sliderMove(blockRef.current, { moveBlockSlider });
+      destroy.push(
+        sliderMove(blockRef.current, {
+          moveBlockSlider: (dx, dy) => {
+            moveBlockSliderRef.current?.(dx, dy);
+          },
+        }).destroy,
+      );
     }
     if (colorLineRef.current) {
-      sliderMove(colorLineRef.current, { moveLineSlider });
+      destroy.push(
+        sliderMove(colorLineRef.current, {
+          moveLineSlider: (dx) => {
+            moveLineSliderRef.current?.(dx);
+          },
+        }).destroy,
+      );
     }
-  }, [moveBlockSlider, moveLineSlider]);
-
-  useEffect(() => {
-    if (value !== value) {
-      onChange && onChange({ value: value, input: true });
-    }
-  }, [value, onChange]);
-
-  useEffect(() => {
-    if (color && blockRef.current) {
-      setSlidersPosition();
-    }
-  }, [color, setSlidersPosition]);
-
+    requestAnimationFrame(()=> setSlidersPosition());
+    return () => {
+      destroy.forEach((d) => d());
+    };
+  }, []);
   const cssScope = 'wx-1yoKzq';
 
   return (
@@ -252,7 +254,7 @@ function ColorBoard({
         <input
           type="text"
           className={cssScope + ' wx-text'}
-          value={value}
+          value={inputValue}
           onChange={handleChange}
         />
       </div>

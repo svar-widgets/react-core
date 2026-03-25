@@ -1,0 +1,57 @@
+.single-avatars-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px 32px;
+  align-items: flex-end;
+}
+
+.single-avatar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.single-avatar-slot {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.single-avatar-slot .wx-avatar-root {
+  width: 32px;
+  height: 32px;
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.single-avatar-item span {
+  font-size: 13px;
+  text-align: center;
+}
+
+.sizes {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.avatar-resizable {
+  width: 500px;
+  resize: horizontal;
+  overflow: auto;
+  min-width: 80px;
+  max-width: 100%;
+  border: 1px dashed #ccc;
+  padding: 8px;
+}

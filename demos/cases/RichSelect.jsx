@@ -1,6 +1,6 @@
 import { Field } from '../../src/index.js';
 import { RichSelect } from '../../src/index.js';
-import { users } from '../data/userlist.js';
+import { users, usersLarge } from '../data/userlist.js';
 
 import UserOption from '../custom/UserOption.jsx';
 
@@ -99,6 +99,17 @@ export default function RichSelectExamples() {
         <h3>RichSelect with hidden options</h3>
         <Field>
           <RichSelect textOptions={users} options={renderedUsers} value={87} />
+        </Field>
+      </div>
+
+      <div className="wx-1Ca119 demo-box">
+        <h3>Perfomance on a large list</h3>
+        <Field>
+          <RichSelect
+            options={usersLarge}
+            value={1000}
+            dropdown={{ virtualized: true }}
+          />
         </Field>
       </div>
     </>

@@ -9,6 +9,7 @@ import { useWritableProp } from '@svar-ui/lib-react';
 import { dateToString } from '@svar-ui/lib-dom';
 import './TimePicker.css';
 import { defaultLocale } from './helpers/locale.js';
+import { toDateDropdown } from './helpers/dropdown.js';
 
 const defValue = new Date(0, 0, 0, 0, 0);
 
@@ -21,6 +22,7 @@ export default function TimePicker({
   error = false,
   format = '',
   onChange,
+  dropdown,
 }) {
   let [value, setValue] = useWritableProp(propertyValue);
 
@@ -157,7 +159,7 @@ export default function TimePicker({
       />
 
       {popup && !disabled && (
-        <Dropdown onCancel={oncancel} width="unset">
+        <Dropdown onCancel={oncancel} {...toDateDropdown(dropdown)}>
           <div className="wx-7f497i wx-wrapper">
             <div className="wx-7f497i wx-timer">
               <input
@@ -191,6 +193,7 @@ export default function TimePicker({
               <Slider
                 label={calendarLocale.hours}
                 value={h}
+                width="unset"
                 onChange={setHours}
                 max={maxH}
               />
@@ -199,6 +202,7 @@ export default function TimePicker({
               <Slider
                 label={calendarLocale.minutes}
                 value={m}
+                width="unset"
                 onChange={setMinutes}
                 max={maxM}
               />

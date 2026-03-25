@@ -1,56 +1,52 @@
-import { useEffect, useRef } from 'react';
-import { clickOutside, env } from '@svar-ui/lib-dom';
-import { useWritableProp } from '@svar-ui/lib-react';
+import { useState, useEffect, useRef, useMemo, useLayoutEffect } from 'react';
+import Portal from './Portal.jsx';
+import Popup from './Popup.jsx';
+import InlineDropdown from './helpers/InlineDropdown.jsx';
 import './Dropdown.css';
 
 function Dropdown({
   position = 'bottom',
   align = 'start',
   autoFit = true,
+  inline = false,
   onCancel,
   width = '100%',
   children,
+  ...props
 }) {
+  const [target, setTarget] = useState(undefined);
   const nodeRef = useRef(null);
 
-  const [positionState, setPosition] = useWritableProp(position);
-  const [alignState, setAlign] = useWritableProp(align);
+  const at = useMemo(() => `${position}-${align}`, [position, align]);
 
-  useEffect(() => {
-    if (autoFit) {
-      const node = nodeRef.current;
-      if (node) {
-        const nodeCoords = node.getBoundingClientRect();
-        const bodyCoords = env.getTopNode(node).getBoundingClientRect();
-
-        if (nodeCoords.right >= bodyCoords.right) {
-          setAlign('end');
-        }
-
-        if (nodeCoords.bottom >= bodyCoords.bottom) {
-          setPosition('top');
-        }
-      }
-    }
-  }, [autoFit]);
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (nodeRef.current) {
-      const down = (e) => {
-        onCancel && onCancel(e);
-      };
-      return clickOutside(nodeRef.current, down).destroy;
+      setTarget(nodeRef.current.parentNode);
     }
-  }, [onCancel]);
+  }, []);
 
   return (
-    <div
-      ref={nodeRef}
-      className={'wx-32GZ52' + ` wx-dropdown wx-${positionState}-${alignState}`}
-      style={{ width: width }}
-    >
-      {children}
-    </div>
+    <>
+      {target && (inline ? (
+        <InlineDropdown
+          onCancel={onCancel}
+          position={position}
+          align={align}
+          autoFit={autoFit}
+          width={width}
+          {...props}
+        >
+          {children}
+        </InlineDropdown>
+      ) : (
+        <Portal>
+          <Popup parent={target} at={at} onCancel={onCancel} width={width} {...props}>
+            {children}
+          </Popup>
+        </Portal>
+      ))}
+      <span ref={nodeRef} className="wx-portal-node wx-32GZ52" />
+    </>
   );
 }
 

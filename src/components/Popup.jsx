@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { clickOutside, calculatePosition } from '@svar-ui/lib-dom';
+import { useState, useEffect, useRef, useCallback, useLayoutEffect } from 'react';
+import { clickOutside, calculatePosition, getAbsParent } from '@svar-ui/lib-dom';
 import './Popup.css';
 
 export function Popup({
@@ -7,15 +7,29 @@ export function Popup({
   top = 0,
   at = 'bottom',
   parent = null,
+  width = 'auto',
+  css = '',
   onCancel,
   children,
+  trackScroll = false,
 }) {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-  const [width, setWidth] = useState('auto');
+  const [w, setW] = useState('auto');
   const [visible, setVisible] = useState(false);
 
   const self = useRef(null);
+  const portalRef = useRef(null);
+
+  function getWidth(calcWidth) {
+    if (parent && (width + '').indexOf('%') > -1) {
+      return width.replace(/(\d+)%/, (match, value) => {
+        value = (value * parent.offsetWidth) / 100 + 'px';
+        return width.replace(match, value);
+      });
+    }
+    return width && width !== 'auto' ? width : calcWidth;
+  }
 
   const updatePosition = useCallback(() => {
     if (!self.current) return;
@@ -24,17 +38,34 @@ export function Popup({
     if (result) {
       setX(result.x);
       setY(result.y);
-      setWidth(result.width);
-      setVisible(true);
+      setW(getWidth(result.width));
     }
-  }, [self, parent, at, left, top]);
+  }, [self, parent, at, left, top, width]);
 
-  useEffect(() => {
-    requestAnimationFrame(updatePosition);
+  useLayoutEffect(() => {
+    const onScroll = (e) => {
+      if (onCancel && e.target !== portalRef.current && self.current && !self.current.contains(e.target))
+        onCancel(e);
+    };
+
+    requestAnimationFrame(() => {
+      updatePosition();
+      setVisible(true);
+      if (trackScroll && self.current) {
+        portalRef.current = getAbsParent(self.current);
+        if (portalRef.current)
+          portalRef.current.addEventListener('scroll', onScroll, true);
+      }
+    });
+
+    return () => {
+      if (trackScroll && portalRef.current)
+        portalRef.current.removeEventListener('scroll', onScroll, true);
+    };
   }, []);
 
-  useEffect(() => {
-    updatePosition(parent);
+  useLayoutEffect(() => {
+    updatePosition();
   }, [parent, at, left, top]);
 
   useEffect(() => {
@@ -49,13 +80,13 @@ export function Popup({
   return (
     <div
       ref={self}
-      className="wx-37M6Fj wx-popup"
+      className={['wx-37M6Fj', 'wx-popup', css].filter(Boolean).join(' ')}
       style={{
         position: 'absolute',
         visibility: visible ? 'visible' : 'hidden',
         top: y + 'px',
         left: x + 'px',
-        width: width,
+        width: w,
       }}
     >
       {children}

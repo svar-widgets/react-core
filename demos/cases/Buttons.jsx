@@ -88,18 +88,20 @@ export default function Buttons() {
 
       <div className="wx-kfse34 demo-box">
         <h3>Icon buttons</h3>
-        <Button icon="wxi-alert">With Icon</Button>
-        <Button type="primary" icon="wxi-alert">
-          With Icon
-        </Button>
-        <Button type="secondary" icon="wxi-alert">
-          With Icon
-        </Button>
-        <Button icon="wxi-alert" />
-        <Button type="primary" icon="wxi-alert" />
-        <Button type="secondary" icon="wxi-alert" />
-        <Button type="danger" icon="wxi-alert" />
-        <Button disabled icon="wxi-alert" />
+        <div className="demo-row">
+          <Button icon="wxi-alert">With Icon</Button>
+          <Button type="primary" icon="wxi-alert">
+            With Icon
+          </Button>
+          <Button type="secondary" icon="wxi-alert">
+            With Icon
+          </Button>
+          <Button icon="wxi-alert" />
+          <Button type="primary" icon="wxi-alert" />
+          <Button type="secondary" icon="wxi-alert" />
+          <Button type="danger" icon="wxi-alert" />
+          <Button disabled icon="wxi-alert" />
+        </div>
       </div>
 
       <div className="wx-kfse34 demo-box">

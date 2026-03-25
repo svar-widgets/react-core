@@ -157,7 +157,7 @@
   --wx-switch-thumb-background: rgba(255, 255, 255, 0.9);
   --wx-switch-thumb-background-disabled: var(--wx-color-disabled);
   --wx-switch-thumb-shadow: none;
-  --wx-popup-z-index: 100;
+  --wx-popup-z-index: 1001;
   --wx-popup-background: var(--wx-background);
   --wx-popup-shadow: var(--wx-shadow-light);
   --wx-popup-border: 1px solid rgba(255, 255, 255, 0.26);

@@ -18,9 +18,9 @@
 
 </div>
 
-**SVAR React Core** is a lightweight, fast, and mobile-friendly React component library that offers 20+ reusable, pre-styled UI components. It includes form controls, popups, date & time pickers, toast notifications, and more. All components are customizable, support light and dark themes, and come with full TypeScript support. 
+[SVAR React Core](https://svar.dev/react/core/) is a lightweight React component library that provides 30+ reusable, pre-styled UI components, including form controls, buttons, selects, popups, date & time pickers, toast notifications, and more.
 
-The library is fully compatible with React 18 and 19.
+The somponents are customizable, support light and dark themes, and include full TypeScript support. The library is compatible with React 18 and 19.
 
 <div align="center">
 
@@ -30,23 +30,30 @@ The library is fully compatible with React 18 and 19.
 
 </br>
 
-Along with the **Core** library, you can use the following SVAR React components to build a unified app interface:
+Along with the **Core** package, you can use the following SVAR React components to build a unified app interface:
 
 - [Menu](https://github.com/svar-widgets/react-menu) - create basic menu bar, actions or context menu;
 - [Toolbar](https://github.com/svar-widgets/react-toolbar) - create button and icon panels with configurable, responsive layouts;
-- [Tasklist](https://github.com/svar-widgets/react-tasklist) - basic to-do list component to add, edit, check or delete tasks;
+- [Tasklist](https://github.com/svar-widgets/react-tasklist) - compact to-do list component to add, edit, check or delete tasks;
 - [Comments](https://github.com/svar-widgets/react-comments) - nice-looking comments section with bubbles or flow views;
 - [File uploader](https://github.com/svar-widgets/react-uploader) - simple file uploader component.
 
 ### :hammer_and_wrench: How to Use
 
+Install the Core library via npm:
+```bash
+npm install @svar-ui/react-core
+```
+
 To start using the components from the **Core** package, simply import the package and include the desired component in your React file:
 
 ```jsx
 import { Button } from "@svar-ui/react-core";
-import "@svar-ui/react-core/all.css";
+import "@svar-ui/react-core/all.css"; // required styles
 
-const myComponent => (<Button>Click me</Button>);
+function App() {
+  return <Button>Click Me</Button>;
+}
 ```
 
 See the [getting started guide](https://docs.svar.dev/react/core/getting_started/) to quickly set up and begin using SVAR Core components in your React projects.
