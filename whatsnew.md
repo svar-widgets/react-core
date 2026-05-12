@@ -1,3 +1,11 @@
+## 2.5.1
+
+### Fixes
+
+- Popup does not close after clicking outside with state update
+- ModalArea size is incorrect in a long scrollable container
+- Week numbers are incorrect from locale-base %w helper
+
 ## 2.5.0
 
 ### New features

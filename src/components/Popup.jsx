@@ -20,6 +20,11 @@ export function Popup({
 
   const self = useRef(null);
   const portalRef = useRef(null);
+  const onCancelRef = useRef(onCancel);
+
+  useEffect(() => {
+    onCancelRef.current = onCancel;
+  }, [onCancel]);
 
   function getWidth(calcWidth) {
     if (parent && (width + '').indexOf('%') > -1) {
@@ -44,8 +49,8 @@ export function Popup({
 
   useLayoutEffect(() => {
     const onScroll = (e) => {
-      if (onCancel && e.target !== portalRef.current && self.current && !self.current.contains(e.target))
-        onCancel(e);
+      if (onCancelRef.current && e.target !== portalRef.current && self.current && !self.current.contains(e.target))
+        onCancelRef.current(e);
     };
 
     requestAnimationFrame(() => {
@@ -70,12 +75,14 @@ export function Popup({
 
   useEffect(() => {
     const down = (e) => {
-      onCancel && onCancel(e);
+      if (onCancelRef.current) {
+        onCancelRef.current(e);
+      }
     };
     if (self.current) {
       return clickOutside(self.current, down).destroy;
     }
-  }, [onCancel]);
+  }, []);
 
   return (
     <div

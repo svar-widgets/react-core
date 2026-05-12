@@ -14,6 +14,11 @@ function InlineDropdown({
   const nodeRef = useRef(null);
   const [position, setPosition] = useState(positionProp);
   const [align, setAlign] = useState(alignProp);
+  const onCancelRef = useRef(onCancel);
+
+  useEffect(() => {
+    onCancelRef.current = onCancel;
+  }, [onCancel]);
 
   useEffect(() => {
     if (autoFit) {
@@ -36,11 +41,11 @@ function InlineDropdown({
   useEffect(() => {
     if (nodeRef.current) {
       const down = (e) => {
-        onCancel && onCancel(e);
+        onCancelRef.current && onCancelRef.current(e);
       };
       return clickOutside(nodeRef.current, down).destroy;
     }
-  }, [onCancel]);
+  }, []);
 
   return (
     <div

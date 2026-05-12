@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { RadioButton, RadioButtonGroup, Field } from '../../src/index';
-import './Radio.css';
 
 export default function Radio() {
   const [value, setValue] = useState(1);
@@ -15,14 +14,14 @@ export default function Radio() {
 
   return (
     <>
-      <div className="wx-2X2L2Q demo-box">
+      <div className="demo-box">
         <h3>RadioButton</h3>
         <RadioButton label="Option 1" name="a1" />
         &nbsp;
         <RadioButton label="Option 2" name="a1" />
       </div>
 
-      <div className="wx-2X2L2Q demo-box">
+      <div className="demo-box">
         <h3>RadioButton with side label</h3>
         <Field label="Radio 1" position="left" type="checkbox">
           <RadioButton name="a2" />
@@ -38,7 +37,7 @@ export default function Radio() {
         </Field>
       </div>
 
-      <div className="wx-2X2L2Q demo-box">
+      <div className="demo-box">
         <h3>RadioButton group ( {value} )</h3>
         <Field label="Radio group" position="left" type="checkbox">
           <RadioButtonGroup
@@ -49,14 +48,14 @@ export default function Radio() {
         </Field>
       </div>
 
-      <div className="wx-2X2L2Q demo-box">
+      <div className="demo-box">
         <h3>RadioButton group: inline</h3>
         <Field label="Radio group" position="left" type="checkbox">
           <RadioButtonGroup options={options} type="inline" value={3} />
         </Field>
       </div>
 
-      <div className="wx-2X2L2Q demo-box">
+      <div className="demo-box">
         <h3>RadioButton group: grid</h3>
         <Field label="Radio group" position="left" type="checkbox">
           <RadioButtonGroup options={options} type="grid" value={4} />
