@@ -12,9 +12,11 @@ export default function Combo({
   textField = 'label',
   placeholder = '',
   title = '',
+  tooltip,
   disabled = false,
   error = false,
   clear = false,
+  css = '',
   children: kids,
   onChange,
   dropdown = {},
@@ -137,10 +139,11 @@ export default function Combo({
 
   return (
     <div
-      className="wx-1j11Jk wx-combo"
+      className={'wx-1j11Jk wx-combo ' + css}
       onClick={() => navigate.current(index())}
       onKeyDown={(ev) => keydown.current(ev, index())}
       title={title}
+      data-tooltip-text={tooltip}
     >
       <input
         className={'wx-1j11Jk wx-input ' + (error ? 'wx-error' : '')}

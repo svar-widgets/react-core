@@ -1,0 +1,82 @@
+.wx-tooltip-area.wx-aab5ZNfz {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.wx-tooltip.wx-aab5ZNfz {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid var(--wx-tooltip-border, transparent);
+  border-radius: var(--wx-border-radius);
+  background-color: var(--wx-tooltip-background);
+  color: var(--wx-tooltip-font-color);
+  animation: wx-tooltip-appear 100ms ease-out;
+}
+
+.wx-tooltip-transition.wx-aab5ZNfz {
+  transition: translate 50ms ease;
+}
+
+@keyframes wx-tooltip-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.wx-tooltip-inner.wx-aab5ZNfz {
+  border-radius: var(--wx-border-radius);
+  overflow: hidden;
+}
+
+.wx-tooltip-text.wx-aab5ZNfz {
+  padding: var(--wx-tooltip-padding);
+  font: var(--wx-tooltip-font);
+  color: var(--wx-tooltip-font-color);
+}
+
+.wx-tooltip.wx-arrow-top.wx-aab5ZNfz::before,
+.wx-tooltip.wx-arrow-bottom.wx-aab5ZNfz::before,
+.wx-tooltip.wx-arrow-left.wx-aab5ZNfz::before,
+.wx-tooltip.wx-arrow-right.wx-aab5ZNfz::before {
+  content: '';
+  position: absolute;
+  border: var(--wx-tooltip-arrow-size, 6px) solid transparent;
+}
+
+.wx-tooltip.wx-arrow-top.wx-aab5ZNfz::before {
+  top: 100%;
+  left: var(--wx-arrow-offset, 50%);
+  transform: translateX(-50%);
+  border-top-color: var(--wx-tooltip-background);
+  filter: drop-shadow(0 1px 0 var(--wx-tooltip-border, transparent));
+}
+
+.wx-tooltip.wx-arrow-bottom.wx-aab5ZNfz::before {
+  bottom: 100%;
+  left: var(--wx-arrow-offset, 50%);
+  transform: translateX(-50%);
+  border-bottom-color: var(--wx-tooltip-background);
+  filter: drop-shadow(0 -1px 0 var(--wx-tooltip-border, transparent));
+}
+
+.wx-tooltip.wx-arrow-left.wx-aab5ZNfz::before {
+  top: var(--wx-arrow-offset, 50%);
+  left: 100%;
+  transform: translateY(-50%);
+  border-left-color: var(--wx-tooltip-background);
+  filter: drop-shadow(1px 0 0 var(--wx-tooltip-border, transparent));
+}
+
+.wx-tooltip.wx-arrow-right.wx-aab5ZNfz::before {
+  top: var(--wx-arrow-offset, 50%);
+  right: 100%;
+  transform: translateY(-50%);
+  border-right-color: var(--wx-tooltip-background);
+  filter: drop-shadow(-1px 0 0 var(--wx-tooltip-border, transparent));
+}

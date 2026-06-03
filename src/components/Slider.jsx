@@ -12,6 +12,7 @@ export default function Slider({
   value: initialValue = 0,
   step = 1,
   title = '',
+  tooltip,
   disabled = false,
   onChange,
   width = "",
@@ -70,7 +71,12 @@ export default function Slider({
   const style = {...(width && { width })};
 
   return (
-    <div className={`wx-2EDJ8G wx-slider ${css}`} style={style} title={title}>
+    <div
+      className={`wx-2EDJ8G wx-slider ${css}`}
+      style={style}
+      title={title}
+      data-tooltip-text={tooltip}
+    >
       {label && (
         <label className="wx-2EDJ8G wx-label" htmlFor={inputId}>
           {label}

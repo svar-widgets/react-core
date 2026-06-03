@@ -30,6 +30,7 @@ export { default as Calendar } from './components/Calendar.jsx';
 export { default as Month } from './components/calendar/Month.jsx';
 export { default as RangeCalendar } from './components/RangeCalendar.jsx';
 export { default as TimePicker } from './components/TimePicker.jsx';
+export { default as Tooltip } from './components/Tooltip.jsx';
 export { default as TwoState } from './components/TwoState.jsx';
 export { default as Modal } from './components/Modal.jsx';
 export { default as ModalArea } from './components/ModalArea.jsx';

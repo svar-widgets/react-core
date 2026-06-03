@@ -13,6 +13,7 @@ const RangeCalendar = ({
   months = 2,
   markers = null,
   buttons = defaultButtons,
+  css = '',
   onChange,
 }) => {
   const [start, setStart] = useWritableProp(startProp);
@@ -124,6 +125,7 @@ const RangeCalendar = ({
           current={leftCurrent}
           markers={markers}
           buttons={buttons}
+          css={css}
           part="both"
           onChange={doChangeStart}
           onCurrentChange={onLeft}
@@ -133,7 +135,7 @@ const RangeCalendar = ({
   } else {
     return (
       <Locale>
-        <div className="wx-p2jCaW wx-rangecalendar">
+        <div className={`wx-p2jCaW wx-rangecalendar ${css}`}>
           <div className="wx-p2jCaW wx-half">
             <Panel
               value={{ start, end }}

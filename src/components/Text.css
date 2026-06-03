@@ -95,3 +95,10 @@
   border-color: var(--wx-color-danger);
   color: var(--wx-color-danger);
 }
+.wx-date-input.wx-hQ64J4 .wx-input.wx-hQ64J4 {
+  cursor: pointer;
+  width: 100%;
+  padding-right: calc(
+    var(--wx-input-icon-size) + var(--wx-input-icon-indent) * 2
+  );
+}

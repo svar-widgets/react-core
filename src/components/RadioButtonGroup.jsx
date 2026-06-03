@@ -10,6 +10,7 @@ export default function RadioButtonGroup({
   value = '',
   onChange,
   type = '',
+  css = '',
 }) {
   const name = uid();
 
@@ -29,7 +30,7 @@ export default function RadioButtonGroup({
 
   return (
     <fieldId.Provider value={null}>
-      <div className={`wx-38w70j wx-radiogroup ${type && `wx-${type}`}`}>
+      <div className={`wx-38w70j wx-radiogroup ${type && `wx-${type}`} ${css}`}>
         {options.map((option) => (
           <div key={option.id} className="wx-38w70j wx-item">
             <RadioButton

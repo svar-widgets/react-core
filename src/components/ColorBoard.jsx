@@ -21,6 +21,7 @@ const LINE = 'Line';
 function ColorBoard({
   value: valueProp = '#65D3B3',
   button = false,
+  css = '',
   onChange,
 }) {
   const _ = (useContext(i18n) || defaultLocale()).getGroup('core');
@@ -219,7 +220,7 @@ function ColorBoard({
   const cssScope = 'wx-1yoKzq';
 
   return (
-    <div className={cssScope + ' wx-colorboard'}>
+    <div className={cssScope + ' wx-colorboard ' + css}>
       <div
         className={cssScope + ' wx-color-block'}
         style={{ background: blockColor }}

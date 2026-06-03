@@ -53,6 +53,7 @@ export function Popup({
         onCancelRef.current(e);
     };
 
+    let resizeObserver;
     requestAnimationFrame(() => {
       updatePosition();
       setVisible(true);
@@ -61,11 +62,16 @@ export function Popup({
         if (portalRef.current)
           portalRef.current.addEventListener('scroll', onScroll, true);
       }
+      if (parent) {
+        resizeObserver = new ResizeObserver(updatePosition);
+        resizeObserver.observe(parent);
+      }
     });
 
     return () => {
       if (trackScroll && portalRef.current)
         portalRef.current.removeEventListener('scroll', onScroll, true);
+      resizeObserver?.disconnect();
     };
   }, []);
 
@@ -80,9 +86,9 @@ export function Popup({
       }
     };
     if (self.current) {
-      return clickOutside(self.current, down).destroy;
+      return clickOutside(self.current, { callback: down, parent: () => parent }).destroy;
     }
-  }, []);
+  }, [parent]);
 
   return (
     <div

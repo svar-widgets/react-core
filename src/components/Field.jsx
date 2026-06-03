@@ -10,6 +10,7 @@ export default function Field({
   type = '',
   required = false,
   id,
+  css = '',
   children,
   width = "",
 }) {
@@ -20,7 +21,7 @@ export default function Field({
     <fieldId.Provider value={inputId}>
       <div
         style={style}
-        className={`wx-2oVUvC wx-field wx-${position} ${error ? 'wx-error' : ''} ${required ? 'wx-required' : ''}`.trim()}
+        className={`wx-2oVUvC wx-field wx-${position} ${css} ${error ? 'wx-error' : ''} ${required ? 'wx-required' : ''}`.trim()}
       >
         {label && (
           inputId

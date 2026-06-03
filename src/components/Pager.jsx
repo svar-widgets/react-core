@@ -8,6 +8,7 @@ const Pager = ({
   total = 0,
   pageSize: initialPageSize = 20,
   value: initialValue = 1,
+  css = '',
   onChange,
 }) => {
   const [pageSize, setPageSize] = useWritableProp(initialPageSize);
@@ -72,7 +73,7 @@ const Pager = ({
   };
 
   return (
-    <div className="wx-35Np0p wx-pager">
+    <div className={`wx-35Np0p wx-pager ${css}`}>
       <div className="wx-35Np0p wx-left">
         <span>{_('Rows per page')}: </span>
         <input

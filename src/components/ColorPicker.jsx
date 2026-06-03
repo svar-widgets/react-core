@@ -11,9 +11,11 @@ export default function ColorPicker({
   id,
   placeholder = '',
   title = '',
+  tooltip,
   disabled = false,
   error = false,
   clear = false,
+  css = '',
   onChange,
   dropdown = {},
 }) {
@@ -42,7 +44,11 @@ export default function ColorPicker({
   }
 
   return (
-    <div className="wx-mmT8WH wx-colorpicker" onClick={handlePopup}>
+    <div
+      className={'wx-mmT8WH wx-colorpicker ' + css}
+      onClick={handlePopup}
+      data-tooltip-text={tooltip}
+    >
       <input
         className={
           'wx-mmT8WH wx-input' +

@@ -7,6 +7,7 @@ export default function Switch({
   id,
   value: initialValue = false,
   disabled = false,
+  css = '',
   onChange,
 }) {
   const inputId = useInputId(id);
@@ -22,7 +23,7 @@ export default function Switch({
   );
 
   return (
-    <label className="wx-2dAR5c wx-switch">
+    <label className={`wx-2dAR5c wx-switch ${css}`}>
       <input
         className="wx-2dAR5c wx-input"
         type="checkbox"

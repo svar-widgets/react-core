@@ -12,11 +12,14 @@ export default function MultiCombo({
   options = [],
   textOptions = null,
   textField = 'label',
+  keepText = false,
   placeholder = '',
   title = '',
+  tooltip,
   disabled = false,
   error = false,
   checkboxes = false,
+  css = '',
   onChange,
   children,
   dropdown = {},
@@ -59,11 +62,12 @@ export default function MultiCombo({
       const { id } = ev;
       if (id) {
         setValue(id);
+        if (!keepText) setText('');
         onChange && onChange({ value: id });
         inputElement.current.focus();
       }
     },
-    [onChange],
+    [onChange, keepText],
   );
 
   const remove = useCallback(
@@ -96,11 +100,12 @@ export default function MultiCombo({
     <div
       title={title}
       className={
-        'wx-12Wj21 wx-multicombo ' +
+        `wx-12Wj21 wx-multicombo ${css} ` +
         `${error ? 'wx-error' : ''} ${disabled ? 'wx-disabled' : ''} ${selected.length ? 'wx-not-empty' : ''} ${focus && !disabled ? 'wx-focus' : ''}`
       }
       onClick={onClickHandler}
       onKeyDown={(ev) => keydown.current(ev, index())}
+      data-tooltip-text={tooltip}
     >
       <div className="wx-12Wj21 wx-wrapper">
         <div className="wx-12Wj21 wx-tags">

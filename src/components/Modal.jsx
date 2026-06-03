@@ -10,6 +10,7 @@ export default function Modal({
   header,
   children,
   footer,
+  css = '',
   onConfirm,
   onCancel,
 }) {
@@ -45,7 +46,7 @@ export default function Modal({
 
   return (
     <div
-      className="wx-1FxkZa wx-modal"
+      className={`wx-1FxkZa wx-modal ${css}`}
       ref={modal}
       tabIndex={0}
       onKeyDown={keydown}

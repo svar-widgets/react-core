@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo, useLayoutEffect } from 'react';
+import { useState, useRef, useMemo, useLayoutEffect } from 'react';
 import Portal from './Portal.jsx';
 import Popup from './Popup.jsx';
 import InlineDropdown from './helpers/InlineDropdown.jsx';

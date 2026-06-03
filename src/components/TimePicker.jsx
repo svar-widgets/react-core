@@ -17,6 +17,7 @@ export default function TimePicker({
   value: propertyValue = defValue,
   id,
   title = '',
+  tooltip,
   css = '',
   disabled = false,
   error = false,
@@ -143,19 +144,14 @@ export default function TimePicker({
     >
       <Text
         id={id}
-        css={css}
+        css={`wx-date-input ${css}`}
         title={title}
+        tooltip={tooltip}
         value={textValue}
         readonly={true}
         disabled={disabled}
         error={error}
         icon="wxi-clock"
-        inputStyle={{
-          cursor: 'pointer',
-          width: '100%',
-          paddingRight:
-            'calc(var(--wx-input-icon-size) + var(--wx-input-icon-indent) * 2)',
-        }}
       />
 
       {popup && !disabled && (

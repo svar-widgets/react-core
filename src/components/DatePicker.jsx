@@ -21,6 +21,7 @@ export default function DatePicker({
   buttons = defaultButtons,
   css = '',
   title = '',
+  tooltip,
   editable = false,
   clear = false,
   onChange,
@@ -92,8 +93,9 @@ export default function DatePicker({
   return (
     <div className="wx-1lKOFG wx-datepicker" onClick={() => setPopup(true)}>
       <Text
-        css={css}
+        css={`wx-date-input ${css}`}
         title={title}
+        tooltip={tooltip}
         value={formattedValue}
         id={id}
         readonly={!editable}
@@ -103,12 +105,6 @@ export default function DatePicker({
         onInput={oncancel}
         onChange={onchangeHandler}
         icon="wxi-calendar"
-        inputStyle={{
-          cursor: 'pointer',
-          width: '100%',
-          paddingRight:
-            'calc(var(--wx-input-icon-size) + var(--wx-input-icon-indent) * 2)',
-        }}
         clear={clear}
       />
 

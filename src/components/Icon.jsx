@@ -1,6 +1,6 @@
 import './Icon.css';
 
-export default function Icon({ css = '', title = '', children, onClick }) {
+export default function Icon({ css = '', title = '', tooltip, children, onClick }) {
   if (children) {
     return (
       <i
@@ -8,6 +8,7 @@ export default function Icon({ css = '', title = '', children, onClick }) {
         role="img"
         className={`wx-mdnST1 wx-icon ${css}`}
         onClick={onClick}
+        data-tooltip-text={tooltip}
       >
         {children}
       </i>
@@ -18,6 +19,7 @@ export default function Icon({ css = '', title = '', children, onClick }) {
         title={title}
         className={`wx-mdnST1 wx-icon ${css}`}
         onClick={onClick}
+        data-tooltip-text={tooltip}
       />
     );
   }

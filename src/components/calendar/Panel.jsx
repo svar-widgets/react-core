@@ -20,6 +20,7 @@ function Panel({
   part = 'normal',
   markers = null,
   buttons,
+  css = '',
   onShift,
   onChange,
 }) {
@@ -70,7 +71,7 @@ function Panel({
 
   return (
     <div
-      className={`wx-2Gr4AS wx-calendar ${part !== 'normal' && part !== 'both' ? 'wx-part' : ''}`}
+      className={`wx-2Gr4AS wx-calendar ${part !== 'normal' && part !== 'both' ? 'wx-part' : ''} ${css}`}
     >
       <div className="wx-2Gr4AS wx-wrap">
         <Header date={current} part={part} type={type} onShift={onShiftLocal} />

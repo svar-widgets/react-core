@@ -28,6 +28,7 @@ const Tabs = ({
           }
           title={option.title}
           onClick={() => handleClick(option.id)}
+          data-tooltip-text={option.tooltip}
         >
           {option.icon && (
             <i

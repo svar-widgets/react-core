@@ -21,7 +21,7 @@
   background: var(--wx-color-primary);
   color: var(--wx-color-primary-font);
 }
-.wx-month:not(.wx-current):hover {
+.wx-month.wx-34U8T8:not(.wx-current):hover {
   background-color: var(--wx-background-hover);
 }
 

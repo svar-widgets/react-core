@@ -90,6 +90,13 @@ export default function Component() {
       </div>
 
       <div className="wx-R7lgfw demo-box">
+        <Field width="500px">
+          <h3>MultiCombo with keepText</h3>
+          <MultiCombo keepText options={users} value={[87]} />
+        </Field>
+      </div>
+
+      <div className="wx-R7lgfw demo-box">
         <h3>Perfomance on a large list</h3>
         <Field width="500px">
           <MultiCombo

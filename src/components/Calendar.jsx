@@ -24,6 +24,7 @@ export default function Calendar({
   current: currentProp,
   markers = null,
   buttons = defaultButtons,
+  css = '',
   onChange,
 }) {
   const [value, setValue] = useWritableProp(valueProp);
@@ -64,6 +65,7 @@ export default function Calendar({
         current={current}
         markers={markers}
         buttons={buttons}
+        css={css}
         onChange={onChangeLocal}
         onCurrentChange={onCurrentChangeLocal}
       />

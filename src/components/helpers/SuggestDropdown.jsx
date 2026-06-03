@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback, useMemo, useLayoutEffect, memo } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo, memo } from 'react';
 import { useContext } from 'react';
 import { snippet } from '@svar-ui/lib-react';
 import { getListHandlers } from './listnav';
@@ -10,17 +10,17 @@ import { defaultLocale } from './locale.js';
 
 const overscan = 10;
 
-const ItemContent = memo(function ItemContent({ data, checkboxes, children, value }) {
+const ItemContent = memo(function ItemContent({ data, checkboxes, itemTemplate, value }) {
   return (
     <>
       {checkboxes && (
         <Checkbox
           id={data.id}
-          style = {{marginRight: "8px",pointerEvents: "none"}}
+          css="wx-list-checkbox"
           value={value && value.includes(data.id)}
         />
       )}
-      {children ? snippet(children, { option: data }) : data.label}
+      {itemTemplate ? snippet(itemTemplate, { option: data }) : data.label}
     </>
   );
 });
@@ -30,7 +30,7 @@ function ListContent({
   visibleRange,
   navIndex,
   checkboxes,
-  children,
+  itemTemplate,
   value,
   measureRefCallback,
 }) {
@@ -45,7 +45,7 @@ function ListContent({
       <ItemContent
         data={data}
         checkboxes={checkboxes}
-        children={children}
+        itemTemplate={itemTemplate}
         value={value}
       />
     </div>
@@ -258,6 +258,10 @@ export default function SuggestDropdown({
   const totalHeight = items.length * itemHeight;
 
   useEffect(() => {
+    if (virtualized) setScrollTop(0);
+  }, [items, virtualized]);
+
+  useEffect(() => {
     if (navIndex === null) {
       initialScrolled.current = false;
     }
@@ -290,7 +294,7 @@ export default function SuggestDropdown({
                   navIndex={navIndex}
                   measureRefCallback={measureRefCallback}
                   checkboxes={checkboxes}
-                  children={children}
+                  itemTemplate={children}
                   value={value}
                 />
               </div>
@@ -302,7 +306,7 @@ export default function SuggestDropdown({
               navIndex={navIndex}
               measureRefCallback={measureRefCallback}
               checkboxes={checkboxes}
-              children={children}
+              itemTemplate={children}
               value={value}
             />
           )

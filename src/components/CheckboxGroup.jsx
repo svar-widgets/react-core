@@ -7,6 +7,7 @@ export default function CheckboxGroup({
   options = [],
   value = [],
   type = '',
+  css = '',
   onChange,
 }) {
   // Handle both onchange and onChange props for compatibility
@@ -23,7 +24,7 @@ export default function CheckboxGroup({
 
   return (
     <fieldId.Provider value={null}>
-      <div className={`wx-q8xwRD wx-checkboxgroup ${type && `wx-${type}`}`}>
+      <div className={`wx-q8xwRD wx-checkboxgroup ${type && `wx-${type}`} ${css}`}>
         {options.map((option) => (
           <div key={option.id} className="wx-q8xwRD wx-item">
             <Checkbox

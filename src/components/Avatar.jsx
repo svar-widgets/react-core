@@ -27,7 +27,7 @@ function getContrastColor(hex) {
 }
 
 function Avatar(props) {
-	const { value, size = 32, limit } = props;
+	const { value, size = 32, limit, css = '' } = props;
 
 	const containerRef = useRef(null);
 	const [containerWidth, setContainerWidth] = useState(null);
@@ -87,7 +87,7 @@ function Avatar(props) {
 	}
 
 	return (
-		<div className="wx-avatar-root wx-aadkRiRf" ref={containerRef}>
+		<div className={`wx-avatar-root wx-aadkRiRf ${css}`} ref={containerRef}>
 			{displayUsers.length > 0 && (
 				<div className="wx-avatar-stack wx-aadkRiRf">
 					{displayUsers.map((user, index) => (

@@ -34,6 +34,7 @@ import Icon from './cases/Icon.jsx';
 import SideArea from './cases/SideArea.jsx';
 import Fullscreen from './cases/Fullscreen.jsx';
 import ModalArea from './cases/ModalArea.jsx';
+import Tooltips from './cases/Tooltips.jsx';
 
 export const links = [
   ['/avatar/:skin', 'Avatar', Avatar, 'Avatar'],
@@ -78,6 +79,7 @@ export const links = [
   ['/textarea/:skin', 'TextArea', TextArea, 'TextArea'],
   ['/counter/:skin', 'Counter Input', Counter, 'Counter'],
   ['/timepicker/:skin', 'TimePicker', TimePicker, 'TimePicker'],
+  ['/tooltips/:skin', 'Tooltips', Tooltips, 'Tooltips'],
   ['/twostate/:skin', 'Two State', TwoState, 'TwoState'],
   ['/icon/:skin', 'Icon', Icon, 'Icon'],
   ['/sidearea/:skin', 'Side Area', SideArea, 'SideArea'],

@@ -9,6 +9,7 @@ export default function Month({
   current,
   part = '',
   markers = null,
+  css = '',
   onCancel,
   onChange,
 }) {
@@ -109,7 +110,7 @@ export default function Month({
   }, []);
 
   return (
-    <div>
+    <div className={`wx-398RBS wx-month ${css}`}>
       <div className="wx-398RBS wx-weekdays">
         {weekdays.map((day) => (
           <div key={day} className="wx-398RBS wx-weekday">

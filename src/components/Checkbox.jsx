@@ -9,7 +9,7 @@ export default function Checkbox({
   value: valueProp = false,
   onChange,
   disabled = false,
-  style
+  css = ''
 }) {
 
   const inputId = useInputId(id);
@@ -22,7 +22,7 @@ export default function Checkbox({
   };
 
   return (
-    <div style={style} className="wx-2IvefP wx-checkbox">
+    <div className={`wx-2IvefP wx-checkbox ${css}`}>
       <input
         type="checkbox"
         id={inputId}

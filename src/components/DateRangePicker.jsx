@@ -20,6 +20,7 @@ const DateRangePicker = ({
   placeholder = '',
   css = '',
   title = '',
+  tooltip,
   format = '',
   months = 2,
   buttons = defaultButtons,
@@ -127,8 +128,9 @@ const DateRangePicker = ({
       onClick={() => setPopup(true)}
     >
       <Text
-        css={css}
+        css={`wx-date-input ${css}`}
         title={title}
+        tooltip={tooltip}
         value={formattedValue}
         id={id}
         readonly={!editable}
@@ -137,12 +139,6 @@ const DateRangePicker = ({
         error={error}
         onChange={doInputChange}
         icon="wxi-calendar"
-        inputStyle={{
-          cursor: 'pointer',
-          width: '100%',
-          paddingRight:
-            'calc(var(--wx-input-icon-size) + var(--wx-input-icon-indent) * 2)',
-        }}
         clear={clear}
       />
 

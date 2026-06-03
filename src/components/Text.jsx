@@ -13,8 +13,8 @@ export default function Text({
   placeholder = '',
   disabled = false,
   error = false,
-  inputStyle = {},
   title = '',
+  tooltip,
   css = '',
   icon = '',
   clear = false,
@@ -86,6 +86,7 @@ export default function Text({
       className={`wx-hQ64J4 wx-text ${cssString} ${error ? 'wx-error' : ''} ${
         disabled ? 'wx-disabled' : ''
       } ${clear ? 'wx-clear' : ''}`}
+      data-tooltip-text={tooltip}
     >
       <input
         className="wx-hQ64J4 wx-input"
@@ -95,7 +96,6 @@ export default function Text({
         disabled={disabled}
         placeholder={placeholder}
         type={inputType}
-        style={inputStyle}
         title={title}
         value={value}
         onInput={oninput}

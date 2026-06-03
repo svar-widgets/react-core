@@ -9,9 +9,11 @@ export default function TextArea({
   id,
   placeholder = '',
   title = '',
+  tooltip,
   disabled = false,
   error = false,
   readonly = false,
+  css = '',
   onChange,
 }) {
   const inputId = useInputId(id);
@@ -53,7 +55,7 @@ export default function TextArea({
 
   return (
     <textarea
-      className={'wx-3yFVAC' + ` wx-textarea ${error ? 'wx-error' : ''}`}
+      className={'wx-3yFVAC' + ` wx-textarea ${css} ${error ? 'wx-error' : ''}`}
       id={inputId}
       disabled={disabled}
       placeholder={placeholder}
@@ -62,6 +64,7 @@ export default function TextArea({
       value={value}
       onInput={handleInput}
       ref={inputRef}
+      data-tooltip-text={tooltip}
     />
   );
 }

@@ -7,6 +7,7 @@ export default function Button({
   icon = '',
   disabled = false,
   title = '',
+  tooltip,
   text = '',
   children,
   onClick,
@@ -32,6 +33,7 @@ export default function Button({
       className={`wx-2ZWgb4 wx-button ${buttonCss} ${icon && !children ? 'wx-icon' : ''}`}
       disabled={disabled}
       onClick={handleClick}
+      data-tooltip-text={tooltip}
     >
       {icon && <i className={'wx-2ZWgb4 ' + icon}></i>}
       {children ? children : text || ' '}

@@ -21,8 +21,10 @@ export default function ColorSelect({
   clear = false,
   placeholder = '',
   title = '',
+  tooltip,
   disabled = false,
   error = false,
+  css = '',
   dropdown = {},
 }) {
   const inputId = useInputId(id);
@@ -54,7 +56,11 @@ export default function ColorSelect({
   }, [disabled]);
 
   return (
-    <div className="wx-121TgJ wx-colorselect" onClick={handlePopup}>
+    <div
+      className={'wx-121TgJ wx-colorselect ' + css}
+      onClick={handlePopup}
+      data-tooltip-text={tooltip}
+    >
       <input
         className={
           'wx-121TgJ wx-input' +

@@ -11,8 +11,10 @@ export default function RichSelect({
   disabled = false,
   error = false,
   title = '',
+  tooltip,
   textField = 'label',
   clear = false,
+  css = '',
   children: kids,
   onChange,
   dropdown = {},
@@ -58,11 +60,12 @@ export default function RichSelect({
 
   return (
     <div
-      className={`wx-2YgblL wx-richselect ${error ? 'wx-2YgblL wx-error' : ''} ${disabled ? 'wx-2YgblL wx-disabled' : ''} ${!kids ? 'wx-2YgblL wx-nowrap' : ''}`}
+      className={`wx-2YgblL wx-richselect ${css} ${error ? 'wx-2YgblL wx-error' : ''} ${disabled ? 'wx-2YgblL wx-disabled' : ''} ${!kids ? 'wx-2YgblL wx-nowrap' : ''}`}
       title={title}
       onClick={() => navigate.current(index())}
       onKeyDown={(ev) => keydown.current(ev, index())}
       tabIndex={0}
+      data-tooltip-text={tooltip}
     >
       <div className="wx-2YgblL wx-label">
         {selected ? (

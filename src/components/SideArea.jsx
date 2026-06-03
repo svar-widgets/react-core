@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { clickOutside } from '@svar-ui/lib-dom';
 import './SideArea.css';
 
-export default function SideArea({ position = 'right', children, onCancel }) {
+export default function SideArea({ position = 'right', css = '', children, onCancel }) {
   const divRef = useRef(null);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export default function SideArea({ position = 'right', children, onCancel }) {
   }, []);
 
   return (
-    <div ref={divRef} className={`wx-2L733M wx-sidearea wx-pos-${position}`}>
+    <div ref={divRef} className={`wx-2L733M wx-sidearea wx-pos-${position} ${css}`}>
       {children}
     </div>
   );

@@ -80,7 +80,7 @@ function DemoExplorerContent({
 
   return (
     <div
-      className={`wx-demos wx-willow-theme layout ${show ? 'active' : ''}${isMobileView ? ' narrow' : ''}`}
+      className={`wx-demos wx-${skin}-theme layout ${show ? 'active' : ''}${isMobileView ? ' narrow' : ''}`}
     >
       <div
         className={`wx-demos sidebar ${show ? 'active' : ''}`}

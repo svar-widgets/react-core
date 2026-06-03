@@ -35,6 +35,7 @@ const Segmented = ({
           }
           title={option.title}
           onClick={() => handleClick(option.id)}
+          data-tooltip-text={option.tooltip}
         >
           {children ? (
             snippet(children, { option })

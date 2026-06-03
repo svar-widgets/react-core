@@ -10,6 +10,7 @@ const TwoState = ({
   iconActive = '',
   onClick,
   title = '',
+  tooltip,
   css = '',
   text = '',
   textActive = '',
@@ -39,6 +40,7 @@ const TwoState = ({
     return (
       <Button
         title={title}
+        tooltip={tooltip}
         text={(value && textActive) || text}
         css={css}
         type={typeStr}
@@ -53,6 +55,7 @@ const TwoState = ({
     return (
       <Button
         title={title}
+        tooltip={tooltip}
         text={(value && textActive) || text}
         css={css}
         type={typeStr}
@@ -67,6 +70,7 @@ const TwoState = ({
     return (
       <Button
         title={title}
+        tooltip={tooltip}
         text={(value && textActive) || text}
         css={css}
         type={typeStr}

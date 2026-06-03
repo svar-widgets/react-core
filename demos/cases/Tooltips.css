@@ -1,0 +1,44 @@
+.tooltips-demo .item {
+  border: var(--wx-border);
+  text-align: center;
+  margin: 20px 0px 20px;
+  padding: 20px 40px;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.tooltips-demo .item.margin {
+  margin-left: 130px;
+}
+
+.tooltips-demo .properties {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+}
+
+.tooltips-demo .controls {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: start;
+}
+
+.tooltips-demo .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: max-content;
+  cursor: default;
+}
+
+.tooltips-demo .grid div {
+  border: var(--wx-border);
+  padding: 10px;
+  text-align: center;
+}
+
+.button-overflow {
+  width: 150px;
+}

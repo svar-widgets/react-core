@@ -10,6 +10,7 @@ export default function RadioButton({
   name = '',
   inputValue = '',
   disabled = false,
+  css = '',
   onChange,
 }) {
   const fallbackId = useId();
@@ -35,7 +36,7 @@ export default function RadioButton({
   }
 
   return (
-    <div className="wx-3lDF1s wx-radio">
+    <div className={`wx-3lDF1s wx-radio ${css}`}>
       <input
         type="radio"
         className="wx-3lDF1s wx-input"

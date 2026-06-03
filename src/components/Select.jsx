@@ -7,11 +7,13 @@ export default function Select({
   options = [],
   placeholder = '',
   title = '',
+  tooltip,
   disabled = false,
   error = false,
   textField = 'label',
   clear = false,
   id,
+  css = '',
   onChange,
 }) {
   const inputId = useInputId(id);
@@ -32,7 +34,10 @@ export default function Select({
   }, [onChange]);
 
   return (
-    <div className="wx-2yx1Fo wx-select-box">
+    <div
+      className={'wx-2yx1Fo wx-select-box ' + css}
+      data-tooltip-text={tooltip}
+    >
       <select
         id={inputId}
         value={value}

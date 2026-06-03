@@ -12,6 +12,8 @@ const Counter = ({
   error = false,
   disabled = false,
   readonly = false,
+  css = '',
+  tooltip,
   onChange,
 }) => {
   const inputId = useInputId(id);
@@ -54,8 +56,9 @@ const Counter = ({
     <div
       className={
         'wx-22t21n ' +
-        `wx-counter ${disabled ? 'wx-disabled' : ''} ${readonly ? 'wx-readonly' : ''} ${error ? 'wx-error' : ''}`
+        `wx-counter ${css} ${disabled ? 'wx-disabled' : ''} ${readonly ? 'wx-readonly' : ''} ${error ? 'wx-error' : ''}`
       }
+      data-tooltip-text={tooltip}
     >
       <button
         aria-label="-"
