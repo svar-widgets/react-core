@@ -6,6 +6,19 @@ import Locale from '../Locale.jsx';
 
 const defaultButtons = ['clear', 'today'];
 
+const addMonth = (l, diff, rPrev) => {
+  const r = new Date(l);
+  r.setMonth(r.getMonth() + diff);
+  if (rPrev && r.valueOf() === rPrev.valueOf()) return rPrev;
+  return r;
+};
+
+const initLeft = (startVal, currentVal) => {
+  const v = new Date(startVal || currentVal || new Date());
+  v.setDate(1);
+  return v;
+};
+
 const RangeCalendar = ({
   start: startProp,
   end: endProp,
@@ -18,49 +31,33 @@ const RangeCalendar = ({
 }) => {
   const [start, setStart] = useWritableProp(startProp);
   const [end, setEnd] = useWritableProp(endProp);
-  const [leftCurrent, setLeftCurrent] = useState();
-  const [rightCurrent, setRightCurrent] = useState();
+  const [leftCurrent, setLeftCurrent] = useState(() => initLeft(start, current));
+  const [rightCurrent, setRightCurrent] = useState(() =>
+    addMonth(initLeft(start, current), 1),
+  );
 
-  const addMonth = useCallback((l, diff, rPrev) => {
-    const r = new Date(l);
-    r.setMonth(r.getMonth() + diff);
-    if (rPrev && r.valueOf() === rPrev.valueOf()) return rPrev;
-    return r;
+  const onLeft = useCallback((v) => {
+    setLeftCurrent(() => {
+      const newLeft = new Date(v);
+      newLeft.setDate(1);
+      setRightCurrent(addMonth(newLeft, 1));
+      return newLeft;
+    });
   }, []);
 
-  const onLeft = useCallback(
-    (v) => {
-      setLeftCurrent(() => {
-        const newLeft = new Date(v);
-        newLeft.setDate(1);
-        setRightCurrent(addMonth(newLeft, 1));
-        return newLeft;
-      });
-    },
-    [addMonth],
-  );
+  const onRight = useCallback((v) => {
+    setRightCurrent(() => {
+      const newRight = new Date(v);
+      newRight.setDate(1);
+      setLeftCurrent(addMonth(newRight, -1));
+      return newRight;
+    });
+  }, []);
 
-  const onRight = useCallback(
-    (v) => {
-      setRightCurrent(() => {
-        const newRight = new Date(v);
-        newRight.setDate(1);
-        setLeftCurrent(addMonth(newRight, -1));
-        return newRight;
-      });
-    },
-    [addMonth],
-  );
-
-  // Effect for initializing leftCurrent based on start/current
+  // Recompute left panel whenever start/current change
   useEffect(() => {
-    const startVal = start;
-    const currentVal = current;
-
-    if (!leftCurrent) {
-      onLeft(startVal ? new Date(startVal) : currentVal || new Date());
-    }
-  }, [start, current, leftCurrent, onLeft]);
+    onLeft(start ? new Date(start) : current || new Date());
+  }, [start, current, onLeft]);
 
   const selectChange = useCallback(
     (ev) => {
@@ -114,8 +111,6 @@ const RangeCalendar = ({
     },
     [onRight, start, end],
   );
-
-  if (!leftCurrent || !rightCurrent) return null;
 
   if (months === 1) {
     return (
