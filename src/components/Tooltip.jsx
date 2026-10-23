@@ -169,9 +169,9 @@ function Tooltip(props) {
 
   const timer = useRef(undefined);
   const hiding = useRef(false);
-  function debounce(fn, ...args) {
+  function debounce(fn) {
     clearTimeout(timer.current);
-    timer.current = setTimeout(fn, delay, ...args);
+    timer.current = setTimeout(fn, delay);
   }
 
   function onMouseMove(ev) {

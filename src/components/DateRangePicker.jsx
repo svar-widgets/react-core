@@ -148,7 +148,6 @@ const DateRangePicker = ({
           {...toDateDropdown(dropdown)}
         >
           <RangeCalendar
-            onCancel={onCancel}
             buttons={buttons}
             start={start}
             end={end}

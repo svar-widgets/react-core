@@ -3,7 +3,7 @@ const hexValidation = (str) => /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(str);
 export function parseColor(value) {
   if (!value) return null;
 
-  value = value.toString(16);
+  value = value.toString();
 
   if (value.charAt(0) === '#') value = value.slice(1);
 

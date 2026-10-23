@@ -15,9 +15,8 @@ const ItemContent = memo(function ItemContent({ data, checkboxes, itemTemplate, 
     <>
       {checkboxes && (
         <Checkbox
-          id={data.id}
           css="wx-list-checkbox"
-          value={value && value.includes(data.id)}
+          value={!!value && value.includes(data.id)}
         />
       )}
       {itemTemplate ? snippet(itemTemplate, { option: data }) : data.label}

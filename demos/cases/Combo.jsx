@@ -104,12 +104,7 @@ const ComboDemo = () => {
       <div className="wx-2RGIOJ demo-box">
         <h3>Combo with hidden options</h3>
         <Field>
-          <Combo
-            textOptions={users}
-            options={renderedUsers}
-            value={87}
-            clearButton
-          />
+          <Combo textOptions={users} options={renderedUsers} value={87} />
         </Field>
       </div>
 

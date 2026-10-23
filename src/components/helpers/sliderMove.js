@@ -26,8 +26,6 @@ export function sliderMove(node, config) {
   }
 
   function up() {
-    slider.blur();
-
     window.removeEventListener('mousemove', move);
     window.removeEventListener('mouseup', up);
   }

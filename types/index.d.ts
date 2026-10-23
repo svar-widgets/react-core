@@ -1,8 +1,103 @@
 import type { ReactNode, FC } from 'react';
+import type { TPosition } from '@svar-ui/lib-dom';
+
+export type { ILocale, Terms, TPosition } from '@svar-ui/lib-dom';
+
+export type TID = string | number;
+
+// an item of the options list of select-like controls
+export interface IOption {
+  id: TID;
+  label?: string;
+}
+
+export interface ITabOption extends IOption {
+  title?: string;
+  tooltip?: string;
+  icon?: string;
+}
+
+export interface DropdownOptions {
+  inline?: boolean;
+  position?: 'top' | 'right' | 'bottom' | 'left';
+  align?: 'start' | 'center' | 'end';
+  autoFit?: boolean;
+  css?: string;
+  width?: string | 'unset' | 'auto';
+  trackScroll?: boolean;
+  virtualized?: boolean;
+}
+
+export type TButtonType =
+  | ''
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'link'
+  | 'primary block'
+  | 'secondary block'
+  | 'danger block'
+  | 'link block';
+
+export type TCalendarButton = 'clear' | 'today' | 'done';
+
+export type TDateFormat = string | ((value: Date) => string);
+
+export interface IDateRange {
+  start: Date;
+  end?: Date | null;
+}
+
+export interface IUser {
+  id: string | number;
+  name?: string;
+  avatar?: string;
+  color?: string;
+}
+
+export type TPositionNoFit = Exclude<
+  TPosition,
+  'bottom-fit' | 'top-fit' | 'center-fit'
+>;
+
+export type TooltipResolver = (
+  element: HTMLElement,
+  event: MouseEvent,
+) => Record<string, any> | string | null;
+
+export type TTooltipContent = FC<Record<string, any>>;
+
+// a message shown by showNotice() of the "wx-helpers" context
+export interface INotice {
+  id?: TID;
+  text?: string;
+  type?: string;
+  expire?: number;
+  remove?: () => void;
+}
+
+// a dialog shown by showModal() of the "wx-helpers" context
+export interface IModalMessage {
+  title?: string;
+  message?: string;
+  buttons?: boolean | string[];
+}
+
+export interface IModalEvent {
+  button?: string;
+  event: MouseEvent;
+}
+
+export interface IHelpers {
+  showNotice: (msg: INotice) => void;
+  showModal: (msg: IModalMessage) => Promise<unknown>;
+}
+
+export type TPortalMount = (handler: () => void) => void;
 
 export declare const TextArea: FC<{
   value?: string;
-  id?: string | number;
+  id?: TID;
   placeholder?: string;
   title?: string;
   tooltip?: string;
@@ -14,15 +109,7 @@ export declare const TextArea: FC<{
 }>;
 
 export declare const Button: FC<{
-  type?:
-    | 'primary'
-    | 'secondary'
-    | 'danger'
-    | 'link'
-    | 'primary block'
-    | 'secondary block'
-    | 'danger block'
-    | 'link block';
+  type?: TButtonType;
   css?: string;
   icon?: string;
   disabled?: boolean;
@@ -34,7 +121,7 @@ export declare const Button: FC<{
 }>;
 
 export declare const Checkbox: FC<{
-  id?: string | number;
+  id?: TID;
   label?: string;
   inputValue?: string | number;
   value?: boolean;
@@ -44,17 +131,17 @@ export declare const Checkbox: FC<{
 }>;
 
 export declare const CheckboxGroup: FC<{
-  options?: { id: string | number; label: string }[];
-  value?: (string | number)[];
+  options?: IOption[];
+  value?: TID[];
   type?: 'inline' | 'grid';
   css?: string;
-  onChange?: (ev: { value: (string | number)[] }) => void;
+  onChange?: (ev: { value: TID[] }) => void;
 }>;
 
 export declare const ColorSelect: FC<{
   colors?: string[];
   value?: string;
-  id?: string | number;
+  id?: TID;
   clear?: boolean;
   placeholder?: string;
   title?: string;
@@ -75,7 +162,7 @@ export declare const ColorBoard: FC<{
 
 export declare const ColorPicker: FC<{
   value?: string;
-  id?: string | number;
+  id?: TID;
   placeholder?: string;
   title?: string;
   tooltip?: string;
@@ -88,10 +175,10 @@ export declare const ColorPicker: FC<{
 }>;
 
 export declare const Combo: FC<{
-  value?: string | number;
-  id?: string | number;
-  options?: { id: string | number; label: string }[];
-  textOptions?: { id: string | number; label: string }[];
+  value?: TID;
+  id?: TID;
+  options?: IOption[];
+  textOptions?: IOption[] | null;
   textField?: string;
   placeholder?: string;
   title?: string;
@@ -100,21 +187,19 @@ export declare const Combo: FC<{
   error?: boolean;
   clear?: boolean;
   css?: string;
-  dropdown?: DropdownOptions & {
-    virtualized?: boolean;
-  };
+  dropdown?: DropdownOptions;
   children?: ReactNode;
-  onChange?: (ev: { value: string | number }) => void;
+  onChange?: (ev: { value: TID }) => void;
 }>;
 
 export declare const DatePicker: FC<{
   value?: Date;
-  id?: string | number;
+  id?: TID;
   disabled?: boolean;
   error?: boolean;
   placeholder?: string;
-  format?: string | ((value: Date) => string);
-  buttons?: boolean | ('clear' | 'today')[];
+  format?: TDateFormat;
+  buttons?: boolean | TCalendarButton[];
   css?: string;
   title?: string;
   tooltip?: string;
@@ -125,21 +210,21 @@ export declare const DatePicker: FC<{
 }>;
 
 export declare const DateRangePicker: FC<{
-  value?: { start: Date; end?: Date };
-  id?: string | number;
+  value?: IDateRange | null;
+  id?: TID;
   disabled?: boolean;
   error?: boolean;
   placeholder?: string;
   css?: string;
   title?: string;
   tooltip?: string;
-  format?: string | ((date: Date) => string);
+  format?: TDateFormat;
   months?: 1 | 2;
-  buttons?: boolean | ('clear' | 'today' | 'done')[];
+  buttons?: boolean | TCalendarButton[];
   editable?: boolean | ((value: string) => Date | null);
   clear?: boolean;
   dropdown?: DropdownOptions;
-  onChange?: (ev: { value: { start: Date; end: Date | null } | null }) => void;
+  onChange?: (ev: { value: IDateRange | null }) => void;
 }>;
 
 export declare const Icon: FC<{
@@ -151,10 +236,10 @@ export declare const Icon: FC<{
 }>;
 
 export declare const MultiCombo: FC<{
-  id?: string | number;
-  value?: (string | number)[];
-  options?: { id: string | number; label: string }[];
-  textOptions?: { id: string | number; label: string }[];
+  id?: TID;
+  value?: TID[];
+  options?: IOption[];
+  textOptions?: IOption[] | null;
   textField?: string;
   keepText?: boolean;
   placeholder?: string;
@@ -164,11 +249,9 @@ export declare const MultiCombo: FC<{
   error?: boolean;
   checkboxes?: boolean;
   css?: string;
-  dropdown?: DropdownOptions & {
-    virtualized?: boolean;
-  };
+  dropdown?: DropdownOptions;
   children?: ReactNode;
-  onChange?: (ev: { value: (string | number)[] }) => void;
+  onChange?: (ev: { value: TID[] }) => void;
 }>;
 
 export declare const Popup: FC<{
@@ -200,7 +283,7 @@ export declare const Pager: FC<{
 }>;
 
 export declare const RadioButton: FC<{
-  id?: string | number;
+  id?: TID;
   label?: string;
   value?: boolean;
   name?: string;
@@ -211,17 +294,17 @@ export declare const RadioButton: FC<{
 }>;
 
 export declare const RadioButtonGroup: FC<{
-  options?: { id: string | number; label: string }[];
-  value?: string | number;
+  options?: IOption[];
+  value?: TID;
   type?: 'inline' | 'grid';
   css?: string;
-  onChange?: (ev: { value: string | number }) => void;
+  onChange?: (ev: { value: TID }) => void;
 }>;
 
 export declare const RichSelect: FC<{
-  value?: string | number;
-  options?: { id: string | number; label: string }[];
-  textOptions?: { id: string | number; label: string }[];
+  value?: TID;
+  options?: IOption[];
+  textOptions?: IOption[] | null;
   placeholder?: string;
   disabled?: boolean;
   error?: boolean;
@@ -230,30 +313,22 @@ export declare const RichSelect: FC<{
   textField?: string;
   clear?: boolean;
   css?: string;
-  dropdown?: DropdownOptions & {
-    virtualized?: boolean;
-  };
+  dropdown?: DropdownOptions;
   children?: ReactNode;
-  onChange?: (ev: { value: string | number }) => void;
+  onChange?: (ev: { value: TID }) => void;
 }>;
 
 export declare const Segmented: FC<{
-  options?: {
-    id: string | number;
-    label: string;
-    icon?: string;
-    title?: string;
-    tooltip?: string;
-  }[];
-  value?: string | number;
+  options?: ITabOption[];
+  value?: TID;
   css?: string;
   children?: ReactNode;
-  onChange?: (ev: { value: string | number }) => void;
+  onChange?: (ev: { value: TID }) => void;
 }>;
 
 export declare const Select: FC<{
-  value?: string | number;
-  options?: { id: string | number; label: string }[];
+  value?: TID;
+  options?: IOption[];
   placeholder?: string;
   title?: string;
   tooltip?: string;
@@ -261,13 +336,13 @@ export declare const Select: FC<{
   error?: boolean;
   textField?: string;
   clear?: boolean;
-  id?: string | number;
+  id?: TID;
   css?: string;
-  onChange?: (ev: { value: string | number }) => void;
+  onChange?: (ev: { value: TID }) => void;
 }>;
 
 export declare const Slider: FC<{
-  id?: string | number;
+  id?: TID;
   label?: string;
   width?: string;
   min?: number;
@@ -282,7 +357,7 @@ export declare const Slider: FC<{
 }>;
 
 export declare const Switch: FC<{
-  id?: string | number;
+  id?: TID;
   value?: boolean;
   disabled?: boolean;
   css?: string;
@@ -290,22 +365,16 @@ export declare const Switch: FC<{
 }>;
 
 export declare const Tabs: FC<{
-  options?: {
-    id: string | number;
-    label?: string;
-    title?: string;
-    tooltip?: string;
-    icon?: string;
-  }[];
-  value?: string | number;
+  options?: ITabOption[];
+  value?: TID;
   type?: 'top' | 'bottom';
   css?: string;
-  onChange?: (ev: { value: string | number }) => void;
+  onChange?: (ev: { value: TID }) => void;
 }>;
 
 export declare const Text: FC<{
   value?: string | number;
-  id?: string | number;
+  id?: TID;
   readonly?: boolean;
   focus?: boolean;
   select?: boolean;
@@ -322,7 +391,7 @@ export declare const Text: FC<{
 }>;
 
 export declare const Counter: FC<{
-  id?: string | number;
+  id?: TID;
   value?: number;
   step?: number;
   min?: number;
@@ -342,7 +411,7 @@ export declare const Field: FC<{
   error?: boolean;
   type?: 'checkbox' | 'slider' | 'switch';
   required?: boolean;
-  id?: string | number;
+  id?: TID;
   css?: string;
   children?: ReactNode;
 }>;
@@ -351,7 +420,7 @@ export declare const Calendar: FC<{
   value?: Date;
   current?: Date;
   markers?: (date: Date) => string;
-  buttons?: boolean | ('clear' | 'today')[];
+  buttons?: boolean | TCalendarButton[];
   css?: string;
   onChange?: (ev: { value: Date | null }) => void;
 }>;
@@ -371,34 +440,26 @@ export declare const RangeCalendar: FC<{
   current?: Date;
   months?: 1 | 2;
   markers?: (date: Date) => string;
-  buttons?: boolean | ('clear' | 'today' | 'done')[];
+  buttons?: boolean | TCalendarButton[];
   css?: string;
   onChange?: (ev: { start: Date | null; end: Date | null }) => void;
 }>;
 
 export declare const TimePicker: FC<{
   value?: Date;
-  id?: string | number;
+  id?: TID;
   title?: string;
   tooltip?: string;
   css?: string;
   disabled?: boolean;
   error?: boolean;
-  format?: string | ((value: Date) => string);
+  format?: TDateFormat;
   onChange?: (ev: { value: Date }) => void;
 }>;
 
 export declare const TwoState: FC<{
   value?: boolean;
-  type?:
-    | 'primary'
-    | 'secondary'
-    | 'danger'
-    | 'link'
-    | 'primary block'
-    | 'secondary block'
-    | 'danger block'
-    | 'link block';
+  type?: TButtonType;
   icon?: string;
   disabled?: boolean;
   iconActive?: string;
@@ -420,8 +481,8 @@ export declare const Modal: FC<{
   footer?: ReactNode;
   css?: string;
   children?: ReactNode;
-  onConfirm?: (ev: { button?: string; event: MouseEvent }) => void;
-  onCancel?: (ev: { button?: string; event: MouseEvent }) => void;
+  onConfirm?: (ev: IModalEvent) => void;
+  onCancel?: (ev: IModalEvent) => void;
 }>;
 
 export declare const ModalArea: FC<{
@@ -473,29 +534,11 @@ export declare const Avatar: FC<{
   css?: string;
 }>;
 
-export interface DropdownOptions {
-  inline?: boolean;
-  position?: 'top' | 'right' | 'bottom' | 'left';
-  align?: 'start' | 'center' | 'end';
-  autoFit?: boolean;
-  css?: string;
-  width?: string | 'unset' | 'auto';
-  trackScroll?: boolean;
-  virtualized?: boolean;
-}
-
-export interface IUser {
-  id: string | number;
-  name?: string;
-  avatar?: string;
-  color?: string;
-}
-
 export declare const SuggestDropdown: FC<
   DropdownOptions & {
-    items?: { id: string | number; label: string }[];
+    items?: IOption[];
     children?: ReactNode;
-    onSelect?: (ev: { id: string | number | (string | number)[] }) => void;
+    onSelect?: (ev: { id: TID | TID[] }) => void;
     onReady?: (ev: {
       navigate?: (dir: number | null, ev?: KeyboardEvent) => void;
       keydown?: (ev: KeyboardEvent, dir: number) => void;
@@ -503,25 +546,12 @@ export declare const SuggestDropdown: FC<
     }) => void;
     multiselect?: boolean;
     checkboxes?: boolean;
-    value?: string | number | (string | number)[];
+    value?: TID | TID[];
     virtualized?: boolean;
   }
 >;
 
-export type { ILocale, Terms, TPosition } from '@svar-ui/lib-dom';
-import type { TPosition } from '@svar-ui/lib-dom';
-
 export declare function popupContainer(node: HTMLElement): void;
-
-export type TPositionNoFit = Exclude<
-  TPosition,
-  'bottom-fit' | 'top-fit' | 'center-fit'
->;
-
-export type TooltipResolver = (
-  element: HTMLElement,
-  event: MouseEvent,
-) => Record<string, any> | string | null;
 
 export declare const Tooltip: FC<{
   at?: TPositionNoFit;
@@ -529,7 +559,7 @@ export declare const Tooltip: FC<{
   touch?: boolean;
   overflow?: boolean;
   delay?: number;
-  content?: FC<Record<string, any>> | null;
+  content?: TTooltipContent | null;
   resolver?: TooltipResolver;
   children?: ReactNode;
   css?: string;

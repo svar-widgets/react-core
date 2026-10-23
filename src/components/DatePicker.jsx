@@ -102,7 +102,6 @@ export default function DatePicker({
         disabled={disabled}
         error={error}
         placeholder={placeholder}
-        onInput={oncancel}
         onChange={onchangeHandler}
         icon="wxi-calendar"
         clear={clear}

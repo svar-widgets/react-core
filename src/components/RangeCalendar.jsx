@@ -89,7 +89,7 @@ const RangeCalendar = ({
         }
       }
 
-      if (final || !buttons.includes('done'))
+      if (final || !Array.isArray(buttons) || !buttons.includes('done'))
         onChange && onChange({ start: s, end: e });
       return [s, e];
     },

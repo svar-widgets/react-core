@@ -24,7 +24,7 @@ const Tabs = ({
           key={option.id}
           className={
             'wx-138fWJ ' +
-            `wx-tab ${option.css} ${option.id === value ? 'wx-active' : ''}`
+            `wx-tab ${option.id === value ? 'wx-active' : ''}`
           }
           title={option.title}
           onClick={() => handleClick(option.id)}

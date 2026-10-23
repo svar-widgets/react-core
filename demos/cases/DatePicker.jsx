@@ -33,7 +33,7 @@ export default function DatePickerDemo() {
         <DatePicker editable={parseDate} format={'%m%d%Y'} />
       </Field>
       <Field label="Align center" error>
-        <DatePicker error align="center" title="Invalid date" />
+        <DatePicker dropdown={{ align: 'center' }} error title="Invalid date" />
       </Field>
       <Field label="Without buttons">
         <DatePicker buttons={false} value={new Date(2022, 4, 10, 16, 0)} />
